@@ -10,7 +10,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/karlseguin/typed"
 )
 
@@ -76,7 +75,6 @@ func call(endpointURL string, params interface{}, result interface{}, options *C
 		return err
 	}
 
-	spew.Dump(body)
 	jsonBody, err := typed.Json(body)
 	if err != nil {
 		return err

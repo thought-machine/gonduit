@@ -1,5 +1,7 @@
 package gonduit
 
+import "github.com/etcinit/gonduit/entities"
+
 // PasteCreateParams are the parameters for PasteCreate.
 type PasteCreateParams struct {
 	Content  string `json:"content"`  // required
@@ -9,7 +11,7 @@ type PasteCreateParams struct {
 
 type pPasteCreate struct {
 	PasteCreateParams
-	Session *Session `json:"__conduit__"`
+	Session *entities.Session `json:"__conduit__"`
 }
 
 // PasteItem is a result item for paste queries.
@@ -60,7 +62,7 @@ type PasteQueryParams struct {
 
 type pPasteQuery struct {
 	PasteQueryParams
-	Session *Session `json:"__conduit__"`
+	Session *entities.Session `json:"__conduit__"`
 }
 
 // PasteQueryResponse is the result of PasteQuery.

@@ -1,8 +1,10 @@
 package gonduit
 
+import "github.com/etcinit/gonduit/entities"
+
 type pPHIDLookup struct {
-	Names   []string `json:"names"`
-	Session *Session `json:"__conduit__"`
+	Names   []string          `json:"names"`
+	Session *entities.Session `json:"__conduit__"`
 }
 
 // PHIDLookupResponse is the result of phid.lookup operations.
@@ -46,8 +48,8 @@ func (c *Conn) PHIDLookupSingle(name string) (*PHIDResult, error) {
 }
 
 type pPHIDQuery struct {
-	PHIDs   []string `json:"phids"`
-	Session *Session `json:"__conduit__"`
+	PHIDs   []string          `json:"phids"`
+	Session *entities.Session `json:"__conduit__"`
 }
 
 // PHIDQueryResponse is the result of phid.query operations.

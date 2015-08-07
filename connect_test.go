@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	_ "github.com/codegangsta/envy/autoload"
+	"github.com/etcinit/gonduit/entities"
 )
 
 var testHost string
@@ -36,8 +37,8 @@ func TestCall(t *testing.T) {
 	}
 
 	type params struct {
-		Names   []string `json:"names"`
-		Session *Session `json:"__conduit__"`
+		Names   []string          `json:"names"`
+		Session *entities.Session `json:"__conduit__"`
 	}
 
 	type result map[string]*struct {

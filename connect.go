@@ -6,6 +6,8 @@ import (
 	"io"
 	"strconv"
 	"time"
+
+	"github.com/etcinit/gonduit/entities"
 )
 
 // Conn is a connection to the conduit API.
@@ -13,7 +15,7 @@ type Conn struct {
 	host         string
 	user         string
 	capabilities *conduitCapabilitiesResponse
-	Session      *Session
+	Session      *entities.Session
 	dialer       *Dialer
 	options      *ClientOptions
 }
@@ -45,13 +47,6 @@ type conduitConnectResponse struct {
 	ConnectionID int64  `json:"connectionID"`
 }
 
-// Session is the conduit session state
-// that will be sent in the JSON params as __conduit__.
-type Session struct {
-	SessionKey   string `json:"sessionKey"`
-	ConnectionID int64  `json:"connectionID"`
-}
-
 // Connect calls conduit.connect to open an authenticated
 // session for future requests.
 func (c *Conn) Connect(user, cert string) error {
@@ -73,7 +68,7 @@ func (c *Conn) Connect(user, cert string) error {
 		return err
 	}
 
-	c.Session = &Session{
+	c.Session = &entities.Session{
 		SessionKey:   resp.SessionKey,
 		ConnectionID: resp.ConnectionID,
 	}
