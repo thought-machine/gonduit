@@ -1,6 +1,7 @@
 package gonduit
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -11,6 +12,11 @@ import (
 
 	"github.com/karlseguin/typed"
 )
+
+// ClientOptions are options that can be set on the HTTP client.
+type ClientOptions struct {
+	InsecureSkipVerify bool
+}
 
 // containsString checks whether s contains e.
 func containsString(s []string, e string) bool {
@@ -26,7 +32,7 @@ func containsString(s []string, e string) bool {
 // handling error responses by returning *ConduitError,
 // and unmarshalling the JSON result into the specified
 // result interface{}.
-func call(endpointURL string, params interface{}, result interface{}) error {
+func call(endpointURL string, params interface{}, result interface{}, options *ClientOptions) error {
 	form := url.Values{}
 	form.Add("output", "json")
 
@@ -51,7 +57,13 @@ func call(endpointURL string, params interface{}, result interface{}) error {
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
-	client := &http.Client{}
+	client := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: options.InsecureSkipVerify,
+			},
+		},
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		return err

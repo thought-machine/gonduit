@@ -59,20 +59,20 @@ type conduitCapabilitiesResponse struct {
 
 // Dial connects to conduit and confirms the API capabilities
 // for future calls.
-func Dial(host string) (*Conn, error) {
+func Dial(host string, options *ClientOptions) (*Conn, error) {
 	var d Dialer
-	d.ClientName = "go-conduit"
+	d.ClientName = "gonduit"
 	d.ClientVersion = "1"
-	return d.Dial(host)
+	return d.Dial(host, options)
 }
 
 // Dial connects to conduit and confirms the API capabilities
 // for future calls.
-func (d *Dialer) Dial(host string) (*Conn, error) {
+func (d *Dialer) Dial(host string, options *ClientOptions) (*Conn, error) {
 	host = strings.TrimSuffix(host, "/")
 
 	var resp conduitCapabilitiesResponse
-	if err := call(host+"/api/conduit.getcapabilities", nil, &resp); err != nil {
+	if err := call(host+"/api/conduit.getcapabilities", nil, &resp, options); err != nil {
 		return nil, err
 	}
 

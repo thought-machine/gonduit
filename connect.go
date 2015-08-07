@@ -15,6 +15,7 @@ type Conn struct {
 	capabilities *conduitCapabilitiesResponse
 	Session      *Session
 	dialer       *Dialer
+	options      *ClientOptions
 }
 
 func getAuthToken() string {
@@ -88,6 +89,6 @@ func (c *Conn) Connect(user, cert string) error {
 // aren't specifically supported by other methods in this
 // package.
 func (c *Conn) Call(method string, params interface{}, result interface{}) error {
-	err := call(c.host+"/api/"+method, params, &result)
+	err := call(c.host+"/api/"+method, params, &result, c.options)
 	return err
 }
