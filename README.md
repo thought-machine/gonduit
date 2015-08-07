@@ -1,16 +1,21 @@
-# Conduit
+# Gonduit
 
-A Go package for connecting to [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
+[![GoDoc](https://godoc.org/github.com/etcinit/gonduit?status.svg)](https://godoc.org/github.com/etcinit/gonduit)
 
-Originally created to help develop [Merlin](https://github.com/jpoehls/merlin), an [Arcanist](http://www.phabricator.com/docs/arcanist/) like tool written in Go.
+A Go client for interacting with [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
 
-[Documentation](http://godoc.org/github.com/jpoehls/go-conduit)
+> Currently this library is incomplete. This is a fork from
+> https://github.com/jpoehls/go-conduit with support for some additional call
+> and options. The library is a bit messy right now.
 
 # Getting a conduit certificate
 
-This library uses `conduit.connect` to establish an authenticated session. You'll need to have a valid username and conduit certificate in order to use this API.
+This library uses `conduit.connect` to establish an authenticated session.
+You'll need to have a valid username and conduit certificate in order to use
+this API.
 
-To get your conduit certificate, go to `https://{MY_PHABRICATOR_URL}/settings/panel/conduit` and copy/paste.
+To get your conduit certificate, go to
+`https://{MY_PHABRICATOR_URL}/settings/panel/conduit` and copy/paste.
 
 # Usage
 
