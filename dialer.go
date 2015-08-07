@@ -94,6 +94,7 @@ func (d *Dialer) Dial(host string, options *ClientOptions) (*Conn, error) {
 		host:         host,
 		capabilities: &resp,
 		dialer:       d,
+		options:      options,
 	}
 
 	return &conn, nil
