@@ -1,4 +1,4 @@
-package conduit
+package gonduit
 
 type pPHIDLookup struct {
 	Names   []string `json:"names"`

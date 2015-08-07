@@ -1,3 +1,2 @@
-// Package conduit provides a client
-// for Phabricator's Conduit API.
-package conduit
+// Package gonduit provides a client for Phabricator's Conduit API.
+package gonduit

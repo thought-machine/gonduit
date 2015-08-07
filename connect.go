@@ -1,4 +1,4 @@
-package conduit
+package gonduit
 
 import (
 	"crypto/sha1"

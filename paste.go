@@ -1,7 +1,6 @@
-package conduit
+package gonduit
 
-// PasteCreateParams are the parameters
-// for PasteCreate.
+// PasteCreateParams are the parameters for PasteCreate.
 type PasteCreateParams struct {
 	Content  string `json:"content"`  // required
 	Title    string `json:"title"`    // optional

@@ -1,9 +1,10 @@
-package conduit
+package gonduit
 
 import (
-	_ "github.com/codegangsta/envy/autoload"
 	"os"
 	"testing"
+
+	_ "github.com/codegangsta/envy/autoload"
 )
 
 var testHost string
