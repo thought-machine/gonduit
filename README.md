@@ -83,8 +83,6 @@ for more information on how to use them.
 
 ### List of supported calls:
 
-## phid.lookup
-
 - conduit.connect
 - differential.query
 - diffusion.querycommit
