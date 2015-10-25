@@ -38,26 +38,26 @@ func setHeaders(req *http.Request) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 }
 
-func prepareForm(params interface{}) (url.Values, error) {
+func prepareForm(body interface{}) (url.Values, error) {
 	form := url.Values{}
 	form.Add("output", "json")
 
-	if params != nil {
-		b, err := json.Marshal(params)
+	if body != nil {
+		jsonBody, err := json.Marshal(body)
 		if err != nil {
 			return nil, err
 		}
 
-		form.Add("params", string(b))
+		form.Add("params", string(jsonBody))
 
-		handleConnectRequest(&form, params)
+		handleConnectRequest(&form, body)
 	}
 
 	return form, nil
 }
 
-func handleConnectRequest(form *url.Values, params interface{}) {
-	_, isConduitConnect := params.(*requests.ConduitConnectRequest)
+func handleConnectRequest(form *url.Values, body interface{}) {
+	_, isConduitConnect := body.(*requests.ConduitConnectRequest)
 	if isConduitConnect {
 		form.Add("__conduit__", "true")
 	}

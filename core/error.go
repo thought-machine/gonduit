@@ -37,5 +37,6 @@ func (err *ConduitError) Error() string {
 // IsConduitError checks whether or not err is a ConduitError.
 func IsConduitError(err error) bool {
 	_, ok := err.(*ConduitError)
+
 	return ok
 }
