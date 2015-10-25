@@ -1,4 +1,4 @@
-# Gonduit [![GoDoc](https://godoc.org/github.com/etcinit/gonduit?status.svg)](https://godoc.org/github.com/etcinit/gonduit)
+# gonduit [![GoDoc](https://godoc.org/github.com/etcinit/gonduit?status.svg)](https://godoc.org/github.com/etcinit/gonduit)
 
 A Go client for interacting with [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
 
@@ -6,9 +6,9 @@ A Go client for interacting with [Phabricator](http://phabricator.org) via the [
 > https://github.com/jpoehls/go-conduit with support for some additional call
 > and options. The library is a bit messy right now.
 
-# Getting started
+## Getting started
 
-## Installing the library
+### Installing the library
 
 A simple `go get` should do it:
 
@@ -16,7 +16,7 @@ A simple `go get` should do it:
 go get github.com/etcinit/gonduit
 ```
 
-## Getting a conduit certificate
+### Getting a conduit certificate
 
 This library uses the `conduit.connect` method to establish an authenticated
 session with the Phabricator instance.
@@ -29,9 +29,9 @@ To get a conduit certificate, go to
 able to copy your certificate. If you are creating a bot/automated script, you
 should create a bot account on Phabricator rather than using your own.
 
-# Basic Usage
+## Basic Usage
 
-## Connecting
+### Connecting
 
 Connecting to a Conduit API is a two-step process: First, `Dial` connects to
 the API and checks compatibility, and finally creates a Client instance. From
@@ -43,7 +43,7 @@ client, err := gonduit.Dial("https://phabricator.psyduck.info")
 err = client.Connect("USERNAME", "CERTIFICATE")
 ```
 
-## Errors
+### Errors
 
 Any conduit error response will be returned as a `core.ConduitError` type:
 
@@ -63,7 +63,7 @@ if core.IsConduitError(err) {
 }
 ```
 
-## Supported Calls
+### Supported Calls
 
 All the supported API calls are available in the `Client` struct. Every
 function is named after the Conduit method they call: For `phid.query`, we have
@@ -79,7 +79,7 @@ func (c *Conn) ConduitMethodName(req Request) (Response, error)
 Some methods may also have specialized functions, you shhould refer the GoDoc
 for more information on how to use them.
 
-### List of supported calls:
+#### List of supported calls:
 
 - conduit.connect
 - differential.query
@@ -93,7 +93,7 @@ for more information on how to use them.
 - phid.query
 - repository.query
 
-# Arbitrary calls
+## Arbitrary calls
 
 If you need to call an API method that is not supported by this client library,
 you can use the `client.Call` method to make arbitrary calls.
