@@ -5,7 +5,7 @@ import "github.com/etcinit/gonduit/constants"
 // ManiphestQueryRequest represents a request to maniphest.query.
 type ManiphestQueryRequest struct {
 	IDs          []string                      `json:"ids"`
-	PHIDs        []string                      `json:"PHIDs"`
+	PHIDs        []string                      `json:"phids"`
 	OwnerPHIDs   []string                      `json:"ownerPHIDs"`
 	AuthorPHIDs  []string                      `json:"authorPHIDs"`
 	ProjectPHIDs []string                      `json:"projectPHIDs"`
