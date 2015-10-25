@@ -91,6 +91,7 @@ for more information on how to use them.
 - paste.query
 - phid.lookup
 - phid.query
+- project.query
 - repository.query
 
 ## Arbitrary calls
