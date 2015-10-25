@@ -8,89 +8,121 @@ A Go client for interacting with [Phabricator](http://phabricator.org) via the [
 > https://github.com/jpoehls/go-conduit with support for some additional call
 > and options. The library is a bit messy right now.
 
-# Getting a conduit certificate
+# Getting started
 
-This library uses `conduit.connect` to establish an authenticated session.
-You'll need to have a valid username and conduit certificate in order to use
-this API.
+## Installing the library
 
-To get your conduit certificate, go to
-`https://{MY_PHABRICATOR_URL}/settings/panel/conduit` and copy/paste.
+A simple `go get` should do it:
 
-# Usage
+```
+go get github.com/etcinit/gonduit
+```
+
+## Getting a conduit certificate
+
+This library uses the `conduit.connect` method to establish an authenticated
+session with the Phabricator instance.
+
+This means that you'll need to have a valid username and and a Conduit
+certificate in order to use the client.
+
+To get a conduit certificate, go to
+`https://{PHABRICATOR_URL}/settings/panel/conduit`. From there, you should be
+able to copy your certificate. If you are creating a bot/automated script, you
+should create a bot account on Phabricator rather than using your own.
+
+# Basic Usage
 
 ## Connecting
 
-```
-conn, err := conduit.Dial("https://secure.phabricator.com")
+Connecting to a Conduit API is a two-step process: First, `Dial` connects to
+the API and checks compatibility, and finally creates a Client instance. From
+there, you can use `client.Connect` to authenticate with the API.
 
-err = conn.Connect("USERNAME", "CERTIFICATE")
+```go
+client, err := gonduit.Dial("https://phabricator.psyduck.info")
+
+err = client.Connect("USERNAME", "CERTIFICATE")
 ```
 
 ## Errors
 
-Any conduit error response will be returned as a
-`conduit.ConduitError` type
+Any conduit error response will be returned as a `core.ConduitError` type:
 
-```
-conn, err := conduit.Dial("https://secure.phabricator.com")
-err = conn.Connect("USERNAME", "CERTIFICATE")
+```go
+client, err := gonduit.Dial("https://phabricator.psyduck.info")
+err = client.Connect("USERNAME", "CERTIFICATE")
 
-ce, ok := err.(*conduit.ConduitError)
+ce, ok := err.(*core.ConduitError)
 if ok {
 	println("code: " + ce.Code())
 	println("info: " + ce.Info())
 }
 
-// Or
-if conduit.IsConduitError(err) {
+// Or, use the built-in utility function:
+if core.IsConduitError(err) {
 	// do something else
 }
 ```
 
+## Supported Calls
+
+All the supported API calls are available in the `Client` struct. Every
+function is named after the Conduit method they call: For `phid.query`, we have
+`Client.PHIDQuery`. The same applies for request and responses:
+`requests.PHIDQueryRequest` and `responses.PHIDQueryResponse`.
+
+Additionally, every general request method has the following signature:
+
+```go
+func (c *Conn) ConduitMethodName(req Request) (Response, error)
+```
+
+Some methods may also have specialized functions, you shhould refer the GoDoc
+for more information on how to use them.
+
+### List of supported calls:
+
 ## phid.lookup
 
-```
-result, err := conduit.PHIDLookup([]string{"T1", "D1"})
-```
+- conduit.connect
+- differential.query
+- diffusion.querycommit
+- file.download
+- macro.creatememe
+- maniphest.query
+- paste.create
+- paste.query
+- phid.lookup
+- phid.query
+- repository.query
 
-```
-result, err := conduit.PHIDLookupSingle("T1")
-```
+# Arbitrary calls
 
-## phid.query
+If you need to call an API method that is not supported by this client library,
+you can use the `client.Call` method to make arbitrary calls.
 
-```
-result, err := conduit.PHIDQuery([]string{"PHID-DREV-gumr6ra5wm32ez46qo3f", "..."})
-```
+You will need to provide a struct with the request body and a struct for the
+response. The request has to be able to be able to be serialized into JSON,
+and the response has be able to be unserialized from JSON.
 
-```
-result, err := conduit.PHIDQuerySingle("PHID-DREV-gumr6ra5wm32ez46qo3f")
-```
-
-## Arbitrary calls
-
-You can use the `conn.Call()` method to make arbitrary
-conduit method calls that aren't specifically supported
-by the package.
-
-```
-type params struct {
+```go
+type phidLookupRequest struct {
 	Names   []string         `json:"names"`
-	Session *conduit.Session `json:"__conduit__"`
+	Session *gonduit.Session `json:"__conduit__"`
 }
 
-type result map[string]*struct{
+type phidLookupResponse map[string]*struct{
 	URI      string `json:"uri"`
 	FullName string `json:"fullName"`
 	Status   string `json:"status"`
 }
 
-p := &params {
+req := &phidLookupRequest {
 	Names: []string{"T1"},
-	Session: conn.Session,
+	Session: client.Session,
 }
-var r result
+var res phidLookupResponse
 
-err := conn.Call("phid.lookup", p, &r)
+err := client.Call("phid.lookup", req, &res)
 ```

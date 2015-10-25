@@ -1,3 +1,4 @@
+// Package gonduit provides a client for Phabricator's Conduit API.
 package gonduit
 
 import (
@@ -7,17 +8,20 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/etcinit/gonduit/core"
 	"github.com/etcinit/gonduit/entities"
+	"github.com/etcinit/gonduit/requests"
+	"github.com/etcinit/gonduit/responses"
 )
 
 // Conn is a connection to the conduit API.
 type Conn struct {
 	host         string
 	user         string
-	capabilities *conduitCapabilitiesResponse
+	capabilities *responses.ConduitCapabilitiesResponse
 	Session      *entities.Session
 	dialer       *Dialer
-	options      *ClientOptions
+	options      *core.ClientOptions
 }
 
 func getAuthToken() string {
@@ -32,31 +36,16 @@ func getAuthSignature(authToken, cert string) string {
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-type pConduitConnect struct {
-	Client            string `json:"client"`
-	ClientVersion     string `json:"clientVersion"`
-	ClientDescription string `json:"clientDescription"`
-	Host              string `json:"host"`
-	User              string `json:"user"`
-	AuthToken         string `json:"authToken"`
-	AuthSignature     string `json:"authSignature"`
-}
-
-type conduitConnectResponse struct {
-	SessionKey   string `json:"sessionKey"`
-	ConnectionID int64  `json:"connectionID"`
-}
-
-// Connect calls conduit.connect to open an authenticated
-// session for future requests.
+// Connect calls conduit.connect to open an authenticated session for future
+// requests.
 func (c *Conn) Connect(user, cert string) error {
 	authToken := getAuthToken()
 	authSig := getAuthSignature(authToken, cert)
 	c.user = user
 
-	var resp conduitConnectResponse
+	var resp responses.ConduitConnectResponse
 
-	if err := c.Call("conduit.connect", &pConduitConnect{
+	if err := c.Call("conduit.connect", &requests.ConduitConnectRequest{
 		Client:            c.dialer.ClientName,
 		ClientVersion:     c.dialer.ClientVersion,
 		ClientDescription: c.dialer.ClientDescription,
@@ -76,14 +65,16 @@ func (c *Conn) Connect(user, cert string) error {
 	return nil
 }
 
-// Call allows you to make a raw conduit method call.
-// Params will be marshalled as JSON and the result JSON
-// will be unmarshalled into the result interface{}.
+// Call allows you to make a raw conduit method call. Params will be marshalled
+// as JSON and the result JSON will be unmarshalled into the result interface{}.
 //
-// This is primarily useful for calling conduit endpoints that
-// aren't specifically supported by other methods in this
-// package.
+// This is primarily useful for calling conduit endpoints that aren't
+// specifically supported by other methods in this package.
 func (c *Conn) Call(method string, params interface{}, result interface{}) error {
-	err := call(c.host+"/api/"+method, params, &result, c.options)
-	return err
+	return core.PerformCall(
+		core.GetEndpointURI(c.host, method),
+		params,
+		&result,
+		c.options,
+	)
 }

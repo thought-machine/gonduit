@@ -2,7 +2,7 @@ package entities
 
 // Repository represents a single code repository.
 type Repository struct {
-	ID          uint64            `json:"id"`
+	ID          string            `json:"id"`
 	Name        string            `json:"name"`
 	PHID        string            `json:"phid"`
 	Callsign    string            `json:"callsign"`

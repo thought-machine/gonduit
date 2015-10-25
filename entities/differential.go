@@ -4,7 +4,7 @@ import "github.com/etcinit/gonduit/util"
 
 // DifferentialRevision represents a revision in Differential.
 type DifferentialRevision struct {
-	ID             uint64              `json:"id"`
+	ID             string              `json:"id"`
 	PHID           string              `json:"phid"`
 	Title          string              `json:"title"`
 	URI            string              `json:"uri"`
@@ -16,7 +16,7 @@ type DifferentialRevision struct {
 	Branch         string              `json:"branch"`
 	Summary        string              `json:"summary"`
 	TestPlan       string              `json:"testPlan"`
-	LineCount      uint64              `json:"lineCount"`
+	LineCount      string              `json:"lineCount"`
 	ActiveDiffPHID string              `json:"activeDiffPHID"`
 	Diffs          []string            `json:"diffs"`
 	Commits        []string            `json:"commits"`
