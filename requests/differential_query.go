@@ -17,7 +17,7 @@ type DifferentialQueryRequest struct {
 	IDs              []uint64                         `json:"ids"`
 	PHIDs            []string                         `json:"phids"`
 	Subscribers      []string                         `json:"subscribers"`
-	ResponsibleUsers []string                         `json:"responsible_users"`
+	ResponsibleUsers []string                         `json:"responsibleUsers"`
 	Branches         []string                         `json:"branches"`
 	Request
 }
