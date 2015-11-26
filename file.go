@@ -9,8 +9,6 @@ import (
 func (c *Conn) FileDownload(req requests.FileDownloadRequest) (*responses.FileDownloadResponse, error) {
 	var res responses.FileDownloadResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("file.download", &req, &res); err != nil {
 		return nil, err
 	}

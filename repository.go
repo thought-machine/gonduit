@@ -9,8 +9,6 @@ import (
 func (c *Conn) RepositoryQuery(req requests.RepositoryQueryRequest) (*responses.RepositoryQueryResponse, error) {
 	var res responses.RepositoryQueryResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("repository.query", &req, &res); err != nil {
 		return nil, err
 	}

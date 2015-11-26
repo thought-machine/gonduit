@@ -3,14 +3,29 @@ package core
 import "errors"
 
 var (
-	// ErrJSONOutputUnsupported is returned when conduit doesn't support JSON output.
+	// ErrJSONOutputUnsupported is returned when conduit doesn't support JSON
+	// output.
 	ErrJSONOutputUnsupported = errors.New("JSON output is not supported")
 
-	// ErrURLEncodedInputUnsupported is returned when conduit doesn't support URL encoded input.
+	// ErrURLEncodedInputUnsupported is returned when conduit doesn't support URL
+	// encoded input.
 	ErrURLEncodedInputUnsupported = errors.New("urlencoded input not supported")
 
-	// ErrSessionAuthUnsupported is returned when conduit doesn't support session authentication.
-	ErrSessionAuthUnsupported = errors.New("Session authentication is not supported")
+	// ErrSessionAuthUnsupported is returned when conduit doesn't support session
+	// authentication.
+	ErrSessionAuthUnsupported = errors.New(
+		"Session authentication is not supported",
+	)
+
+	// ErrMissingResults is returned when the "results" key is missing from the
+	// response object.
+	ErrMissingResults = errors.New(
+		"Results key was not provided in the response object.",
+	)
+
+	// ErrTokenAuthUnsupported is returned when conduit doesn't support token
+	// authentication.
+	ErrTokenAuthUnsupported = errors.New("Token authentication is not supported")
 )
 
 // ConduitError is returned when conduit

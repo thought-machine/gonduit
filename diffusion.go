@@ -9,8 +9,6 @@ import (
 func (c *Conn) DiffusionQueryCommits(req requests.DiffusionQueryCommitsRequest) (*responses.DiffusionQueryCommitsResponse, error) {
 	var res responses.DiffusionQueryCommitsResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("diffusion.querycommits", &req, &res); err != nil {
 		return nil, err
 	}

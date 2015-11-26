@@ -39,7 +39,7 @@ func (d *Dialer) Dial(host string, options *core.ClientOptions) (*Conn, error) {
 	}
 
 	// Now, we need to assert that the conduit API supports this client.
-	assertSupportedCapabilities(res)
+	assertSupportedCapabilities(res, options)
 
 	conn := Conn{
 		host:         host,
@@ -51,9 +51,20 @@ func (d *Dialer) Dial(host string, options *core.ClientOptions) (*Conn, error) {
 	return &conn, nil
 }
 
-func assertSupportedCapabilities(res responses.ConduitCapabilitiesResponse) error {
-	if !util.ContainsString(res.Authentication, "session") {
-		return core.ErrSessionAuthUnsupported
+func assertSupportedCapabilities(
+	res responses.ConduitCapabilitiesResponse,
+	options *core.ClientOptions,
+) error {
+	if options.APIToken != "" {
+		if !util.ContainsString(res.Authentication, "token") {
+			return core.ErrTokenAuthUnsupported
+		}
+	}
+
+	if options.Cert != "" {
+		if !util.ContainsString(res.Authentication, "session") {
+			return core.ErrSessionAuthUnsupported
+		}
 	}
 
 	if !util.ContainsString(res.Input, "urlencoded") {

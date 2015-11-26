@@ -9,8 +9,6 @@ import (
 func (c *Conn) DifferentialQuery(req requests.DifferentialQueryRequest) (*responses.DifferentialQueryResponse, error) {
 	var res responses.DifferentialQueryResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("differential.query", &req, &res); err != nil {
 		return nil, err
 	}

@@ -20,7 +20,7 @@ func GetEndpointURI(host string, method string) string {
 // If an error is encountered, it will be unmarshalled into a ConduitError
 // struct.
 func PerformCall(endpointURL string, params interface{}, result interface{}, options *ClientOptions) error {
-	req, err := MakeRequest(endpointURL, params)
+	req, err := MakeRequest(endpointURL, params, options)
 	if err != nil {
 		return err
 	}
@@ -44,14 +44,18 @@ func PerformCall(endpointURL string, params interface{}, result interface{}, opt
 	}
 
 	// parse any error conduit returned first
-	if jsonBody.String("error_code") != "" {
+	if jsonBody.Exists("error_code") {
 		return &ConduitError{
 			code: jsonBody.String("error_code"),
 			info: jsonBody.String("error_info"),
 		}
 	}
 
-	// if no error, parse the expected result
+	if jsonBody.Exists("result") == false {
+		return ErrMissingResults
+	}
+
+	// If we get no errors, parse the expected result
 	resultBytes, err := jsonBody.ToBytes("result")
 	if err != nil {
 		return err

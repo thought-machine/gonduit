@@ -38,10 +38,9 @@ func getAuthSignature(authToken, cert string) string {
 
 // Connect calls conduit.connect to open an authenticated session for future
 // requests.
-func (c *Conn) Connect(user, cert string) error {
+func (c *Conn) Connect() error {
 	authToken := getAuthToken()
-	authSig := getAuthSignature(authToken, cert)
-	c.user = user
+	authSig := getAuthSignature(authToken, c.options.Cert)
 
 	var resp responses.ConduitConnectResponse
 
@@ -50,7 +49,7 @@ func (c *Conn) Connect(user, cert string) error {
 		ClientVersion:     c.dialer.ClientVersion,
 		ClientDescription: c.dialer.ClientDescription,
 		Host:              c.host,
-		User:              c.user,
+		User:              c.options.CertUser,
 		AuthToken:         authToken,
 		AuthSignature:     authSig,
 	}, &resp); err != nil {
@@ -61,6 +60,8 @@ func (c *Conn) Connect(user, cert string) error {
 		SessionKey:   resp.SessionKey,
 		ConnectionID: resp.ConnectionID,
 	}
+
+	c.options.SessionKey = resp.SessionKey
 
 	return nil
 }

@@ -9,8 +9,6 @@ import (
 func (c *Conn) ManiphestQuery(req requests.ManiphestQueryRequest) (*responses.ManiphestQueryResponse, error) {
 	var res responses.ManiphestQueryResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("maniphest.query", &req, &res); err != nil {
 		return nil, err
 	}

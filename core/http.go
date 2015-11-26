@@ -7,6 +7,12 @@ import (
 
 // ClientOptions are options that can be set on the HTTP client.
 type ClientOptions struct {
+	APIToken string
+
+	Cert       string
+	CertUser   string
+	SessionKey string
+
 	InsecureSkipVerify bool
 }
 

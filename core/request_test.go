@@ -16,9 +16,18 @@ func TestMakeRequest(t *testing.T) {
 		Client:        "gonduit",
 		ClientVersion: "1",
 	}
-	body, _ := prepareForm(&request)
 
-	req, err := MakeRequest("http://localhost/api/conduit.connect", &request)
+	options := &ClientOptions{
+		APIToken: "hello-world-hello-world",
+	}
+
+	body, _ := prepareForm(&request, options)
+
+	req, err := MakeRequest(
+		"http://localhost/api/conduit.connect",
+		&request,
+		options,
+	)
 
 	assert.Nil(t, err)
 	assert.Equal(t, "http://localhost/api/conduit.connect", req.URL.String())
@@ -30,7 +39,15 @@ func TestMakeRequest(t *testing.T) {
 }
 
 func TestMakeRequest_withInvalidBody(t *testing.T) {
-	_, err := MakeRequest("http://localhost/api/conduit.connect", http.Request{})
+	options := &ClientOptions{
+		APIToken: "hello-world-hello-world",
+	}
+
+	_, err := MakeRequest(
+		"http://localhost/api/conduit.connect",
+		http.Request{},
+		options,
+	)
 
 	assert.NotNil(t, err)
 }
@@ -41,7 +58,11 @@ func TestMakeRequest_withInvalidRequest(t *testing.T) {
 		ClientVersion: "1",
 	}
 
-	_, err := MakeRequest("htcp.\\invaid#&^%", &request)
+	options := &ClientOptions{
+		APIToken: "hello-world-hello-world",
+	}
+
+	_, err := MakeRequest("htcp.\\invaid#&^%", &request, options)
 
 	assert.NotNil(t, err)
 }
@@ -63,7 +84,9 @@ func TestPrepareForm(t *testing.T) {
 	}
 	marshalled, _ := json.Marshal(request)
 
-	form, err := prepareForm(&request)
+	options := &ClientOptions{}
+
+	form, err := prepareForm(&request, options)
 
 	assert.Nil(t, err)
 	assert.Equal(t, "true", form.Get("__conduit__"))
@@ -72,7 +95,7 @@ func TestPrepareForm(t *testing.T) {
 }
 
 func TestPrepareForm_withNoBody(t *testing.T) {
-	form, err := prepareForm(nil)
+	form, err := prepareForm(nil, &ClientOptions{})
 
 	assert.Nil(t, err)
 	assert.Equal(t, "", form.Get("__conduit__"))
@@ -80,8 +103,35 @@ func TestPrepareForm_withNoBody(t *testing.T) {
 	assert.Equal(t, "", form.Get("params"))
 }
 
+func TestPrepareForm_withAPIToken(t *testing.T) {
+	form, err := prepareForm(nil, &ClientOptions{
+		APIToken: "hello-world-hello-world",
+	})
+
+	assert.Nil(t, err)
+	assert.Equal(t, "", form.Get("__conduit__"))
+	assert.Equal(t, "hello-world-hello-world", form.Get("api.token"))
+	assert.Equal(t, "json", form.Get("output"))
+	assert.Equal(t, "", form.Get("params"))
+}
+
+func TestPrepareForm_withSessionKey(t *testing.T) {
+	form, err := prepareForm(nil, &ClientOptions{
+		SessionKey: "hello-world-hello-world",
+	})
+
+	assert.Nil(t, err)
+	assert.Equal(t, "hello-world-hello-world", form.Get("__conduit__"))
+	assert.Equal(t, "", form.Get("api.token"))
+	assert.Equal(t, "json", form.Get("output"))
+	assert.Equal(t, "", form.Get("params"))
+}
+
 func TestPrepareForm_withError(t *testing.T) {
-	_, err := prepareForm(http.Request{})
+	_, err := prepareForm(
+		http.Request{},
+		&ClientOptions{},
+	)
 
 	assert.NotNil(t, err)
 }

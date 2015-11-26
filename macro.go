@@ -9,8 +9,6 @@ import (
 func (c *Conn) MacroCreateMeme(req requests.MacroCreateMemeRequest) (*responses.MacroCreateMemeResponse, error) {
 	var res responses.MacroCreateMemeResponse
 
-	req.Session = c.Session
-
 	if err := c.Call("macro.creatememe", &req, &res); err != nil {
 		return nil, err
 	}
