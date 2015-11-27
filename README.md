@@ -16,25 +16,35 @@ A simple `go get` should do it:
 go get github.com/etcinit/gonduit
 ```
 
-### Getting a conduit certificate
+### Authentication
 
-This library uses the `conduit.connect` method to establish an authenticated
-session with the Phabricator instance.
+Gonduit supports the following authentication methods:
 
-This means that you'll need to have a valid username and and a Conduit
-certificate in order to use the client.
+- tokens
+- session
+
+> If you are creating a bot/automated script, you
+> should create a bot account on Phabricator rather than using your own.
+
+#### `tokens`: Getting a conduit API token
+
+To get an API token, go to
+`https://{PHABRICATOR_URL}/settings/panel/apitokens/`. From there, you should be
+able to create and copy an API token to use with the client.
+
+#### `session`: Getting a conduit certificate
 
 To get a conduit certificate, go to
 `https://{PHABRICATOR_URL}/settings/panel/conduit`. From there, you should be
-able to copy your certificate. If you are creating a bot/automated script, you
-should create a bot account on Phabricator rather than using your own.
+able to copy your certificate.
 
 ## Basic Usage
 
 ### Connecting
 
-Connecting to a Conduit API is a two-step process: First, `Dial` connects to
-the API and checks compatibility, and finally creates a Client instance:
+To construct an instance of a Gonduit client, use `Dial` with the URL of your
+install and an options object. `Dial` connects to the API, checks compatibility,
+and finally creates a Client instance:
 
 ```go
 client, err := gonduit.Dial(
@@ -48,12 +58,19 @@ client, err := gonduit.Dial(
 While certificate-based/session authentication is being deprecated in favor of
 API tokens, Gonduit still supports certificates in case you are using an older
 install. After calling `Dial`, you will also need to call `client.Connect` to
-authenticate with the API and create a session.
+create a session. The session key will be stored in the client itself and it
+will automatically be passed on on every subsequent request.
 
 ```go
-client, err := gonduit.Dial("https://phabricator.psyduck.info")
+client, err := gonduit.Dial(
+	"https://phabricator.psyduck.info",
+	&core.ClientOptions{
+		Cert: "CERTIFICATE",
+		CertUser: "USERNAME",
+	}
+)
 
-err = client.Connect("USERNAME", "CERTIFICATE")
+err = client.Connect()
 ```
 
 ### Errors
@@ -93,7 +110,7 @@ Additionally, every general request method has the following signature:
 func (c *Conn) ConduitMethodName(req Request) (Response, error)
 ```
 
-Some methods may also have specialized functions, you shhould refer the GoDoc
+Some methods may also have specialized functions, you should refer the GoDoc
 for more information on how to use them.
 
 #### List of supported calls:
@@ -119,6 +136,9 @@ you can use the `client.Call` method to make arbitrary calls.
 You will need to provide a struct with the request body and a struct for the
 response. The request has to be able to be able to be serialized into JSON,
 and the response has be able to be unserialized from JSON.
+
+Request structs should also "extend" the `requests.Request` struct, which
+contains additional fields needed to authenticate with Conduit.
 
 ```go
 type phidLookupRequest struct {
