@@ -34,8 +34,21 @@ should create a bot account on Phabricator rather than using your own.
 ### Connecting
 
 Connecting to a Conduit API is a two-step process: First, `Dial` connects to
-the API and checks compatibility, and finally creates a Client instance. From
-there, you can use `client.Connect` to authenticate with the API.
+the API and checks compatibility, and finally creates a Client instance:
+
+```go
+client, err := gonduit.Dial(
+	"https://phabricator.psyduck.info",
+	&core.ClientOptions{
+		APIToken: "api-SOMETOKEN"
+	}
+)
+```
+
+While certificate-based/session authentication is being deprecated in favor of
+API tokens, Gonduit still supports certificates in case you are using an older
+install. After calling `Dial`, you will also need to call `client.Connect` to
+authenticate with the API and create a session.
 
 ```go
 client, err := gonduit.Dial("https://phabricator.psyduck.info")
@@ -48,8 +61,12 @@ err = client.Connect("USERNAME", "CERTIFICATE")
 Any conduit error response will be returned as a `core.ConduitError` type:
 
 ```go
-client, err := gonduit.Dial("https://phabricator.psyduck.info")
-err = client.Connect("USERNAME", "CERTIFICATE")
+client, err := gonduit.Dial(
+	"https://phabricator.psyduck.info",
+	&core.ClientOptions{
+		APIToken: "api-SOMETOKEN"
+	}
+)
 
 ce, ok := err.(*core.ConduitError)
 if ok {
@@ -106,7 +123,7 @@ and the response has be able to be unserialized from JSON.
 ```go
 type phidLookupRequest struct {
 	Names   []string         `json:"names"`
-	Session *gonduit.Session `json:"__conduit__"`
+	requests.Request // Includes __conduit__ field needed for authentication.
 }
 
 type phidLookupResponse map[string]*struct{
