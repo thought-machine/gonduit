@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/etcinit/gonduit/requests"
+	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -100,31 +101,40 @@ func TestPrepareForm_withNoBody(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, "", form.Get("__conduit__"))
 	assert.Equal(t, "json", form.Get("output"))
-	assert.Equal(t, "", form.Get("params"))
+	assert.Equal(t, "{}", form.Get("params"))
 }
 
 func TestPrepareForm_withAPIToken(t *testing.T) {
-	form, err := prepareForm(nil, &ClientOptions{
+
+	form, err := prepareForm(&requests.Request{}, &ClientOptions{
 		APIToken: "hello-world-hello-world",
 	})
 
-	assert.Nil(t, err)
-	assert.Equal(t, "", form.Get("__conduit__"))
-	assert.Equal(t, "hello-world-hello-world", form.Get("api.token"))
-	assert.Equal(t, "json", form.Get("output"))
-	assert.Equal(t, "", form.Get("params"))
-}
-
-func TestPrepareForm_withSessionKey(t *testing.T) {
-	form, err := prepareForm(nil, &ClientOptions{
-		SessionKey: "hello-world-hello-world",
+	jsonBody, _ := json.Marshal(gin.H{
+		"__conduit__": gin.H{
+			"token": "hello-world-hello-world",
+		},
 	})
 
 	assert.Nil(t, err)
-	assert.Equal(t, "hello-world-hello-world", form.Get("__conduit__"))
-	assert.Equal(t, "", form.Get("api.token"))
 	assert.Equal(t, "json", form.Get("output"))
-	assert.Equal(t, "", form.Get("params"))
+	assert.Equal(t, string(jsonBody), form.Get("params"))
+}
+
+func TestPrepareForm_withSessionKey(t *testing.T) {
+	form, err := prepareForm(&requests.Request{}, &ClientOptions{
+		SessionKey: "hello-world-hello-world",
+	})
+
+	jsonBody, _ := json.Marshal(gin.H{
+		"__conduit__": gin.H{
+			"sessionKey": "hello-world-hello-world",
+		},
+	})
+
+	assert.Nil(t, err)
+	assert.Equal(t, "json", form.Get("output"))
+	assert.Equal(t, string(jsonBody), form.Get("params"))
 }
 
 func TestPrepareForm_withError(t *testing.T) {

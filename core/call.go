@@ -44,7 +44,7 @@ func PerformCall(endpointURL string, params interface{}, result interface{}, opt
 	}
 
 	// parse any error conduit returned first
-	if jsonBody.Exists("error_code") {
+	if jsonBody.Exists("error_code") && jsonBody.String("error_code") != "" {
 		return &ConduitError{
 			code: jsonBody.String("error_code"),
 			info: jsonBody.String("error_info"),

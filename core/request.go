@@ -46,10 +46,16 @@ func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
 	form := url.Values{}
 	form.Add("output", "json")
 
-	if options.APIToken != "" {
-		form.Add("api.token", options.APIToken)
-	} else if options.SessionKey != "" {
-		form.Add("__conduit__", options.SessionKey)
+	if request, ok := body.(requests.RequestInterface); ok {
+		metadata := requests.ConduitMetadata{}
+
+		if options.APIToken != "" {
+			metadata.Token = options.APIToken
+		} else if options.SessionKey != "" {
+			metadata.SessionKey = options.SessionKey
+		}
+
+		request.SetMetadata(&metadata)
 	}
 
 	if body != nil {
@@ -61,6 +67,13 @@ func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
 		form.Add("params", string(jsonBody))
 
 		handleConnectRequest(&form, body)
+	} else {
+		jsonBody, err := json.Marshal(map[string]interface{}{})
+		if err != nil {
+			return nil, err
+		}
+
+		form.Add("params", string(jsonBody))
 	}
 
 	return form, nil
