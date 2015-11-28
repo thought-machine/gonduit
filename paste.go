@@ -9,7 +9,7 @@ import (
 func (c *Conn) PasteCreate(req *requests.PasteCreateRequest) (responses.PasteCreateResponse, error) {
 	var res responses.PasteCreateResponse
 
-	if err := c.Call("paste.create", req, &res); err != nil {
+	if err := c.Call("paste.create", &req, &res); err != nil {
 		return nil, err
 	}
 
@@ -20,7 +20,7 @@ func (c *Conn) PasteCreate(req *requests.PasteCreateRequest) (responses.PasteCre
 func (c *Conn) PasteQuery(req *requests.PasteQueryRequest) (responses.PasteQueryResponse, error) {
 	var res responses.PasteQueryResponse
 
-	if err := c.Call("paste.query", req, &res); err != nil {
+	if err := c.Call("paste.query", &req, &res); err != nil {
 		return nil, err
 	}
 

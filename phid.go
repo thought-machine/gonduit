@@ -10,7 +10,7 @@ import (
 func (c *Conn) PHIDLookup(req requests.PHIDLookupRequest) (responses.PHIDLookupResponse, error) {
 	var r responses.PHIDLookupResponse
 
-	if err := c.Call("phid.lookup", req, &r); err != nil {
+	if err := c.Call("phid.lookup", &req, &r); err != nil {
 		return nil, err
 	}
 
@@ -36,7 +36,7 @@ func (c *Conn) PHIDLookupSingle(name string) (*entities.PHIDResult, error) {
 func (c *Conn) PHIDQuery(req requests.PHIDQueryRequest) (responses.PHIDQueryResponse, error) {
 	var r responses.PHIDQueryResponse
 
-	if err := c.Call("phid.query", req, &r); err != nil {
+	if err := c.Call("phid.query", &req, &r); err != nil {
 		return nil, err
 	}
 

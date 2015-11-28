@@ -137,7 +137,7 @@ You will need to provide a struct with the request body and a struct for the
 response. The request has to be able to be able to be serialized into JSON,
 and the response has be able to be unserialized from JSON.
 
-Request structs should also "extend" the `requests.Request` struct, which
+Request structs **must** also "extend" the `requests.Request` struct, which
 contains additional fields needed to authenticate with Conduit.
 
 ```go
