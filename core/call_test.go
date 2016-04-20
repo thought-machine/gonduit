@@ -59,11 +59,12 @@ func TestPerformCall_withEmptyArray(t *testing.T) {
 	defer ts.Close()
 
 	var result responses.PHIDLookupResponse
+	ptr := &result
 
 	err := PerformCall(
 		ts.URL+"/api/phid.lookup",
 		map[string]interface{}{},
-		&result,
+		&ptr,
 		&ClientOptions{},
 	)
 

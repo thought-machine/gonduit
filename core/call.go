@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"reflect"
 	"strings"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/karlseguin/typed"
 )
 
@@ -68,15 +68,14 @@ func PerformCall(
 	}
 
 	if result != nil && resultBytes != nil {
-		var arrResult []string
+		var arrResult []interface{}
+
 		if err = json.Unmarshal(resultBytes, &arrResult); err == nil {
-			resultValue := reflect.Indirect(reflect.ValueOf(result))
-
-			if len(arrResult) < 1 && resultValue.Kind() == reflect.Map {
-				result = reflect.MakeMap(resultValue.Type()).Interface()
-
+			if len(arrResult) < 1 {
 				return nil
 			}
+		} else {
+			spew.Dump(err)
 		}
 		if err = json.Unmarshal(resultBytes, &result); err != nil {
 			return err
