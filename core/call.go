@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"reflect"
 	"strings"
 
 	"github.com/karlseguin/typed"
@@ -19,7 +20,12 @@ func GetEndpointURI(host string, method string) string {
 //
 // If an error is encountered, it will be unmarshalled into a ConduitError
 // struct.
-func PerformCall(endpointURL string, params interface{}, result interface{}, options *ClientOptions) error {
+func PerformCall(
+	endpointURL string,
+	params interface{},
+	result interface{},
+	options *ClientOptions,
+) error {
 	req, err := MakeRequest(endpointURL, params, options)
 	if err != nil {
 		return err
@@ -62,6 +68,16 @@ func PerformCall(endpointURL string, params interface{}, result interface{}, opt
 	}
 
 	if result != nil && resultBytes != nil {
+		var arrResult []string
+		if err = json.Unmarshal(resultBytes, &arrResult); err == nil {
+			resultValue := reflect.Indirect(reflect.ValueOf(result))
+
+			if len(arrResult) < 1 && resultValue.Kind() == reflect.Map {
+				result = reflect.MakeMap(resultValue.Type()).Interface()
+
+				return nil
+			}
+		}
 		if err = json.Unmarshal(resultBytes, &result); err != nil {
 			return err
 		}

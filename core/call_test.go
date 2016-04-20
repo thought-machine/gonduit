@@ -4,6 +4,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/etcinit/gonduit/responses"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -37,6 +38,30 @@ func TestPerformCall(t *testing.T) {
 
 	err := PerformCall(
 		ts.URL+"/api/conduit.getcapabilities",
+		map[string]interface{}{},
+		&result,
+		&ClientOptions{},
+	)
+
+	assert.Nil(t, err)
+}
+
+func TestPerformCall_withEmptyArray(t *testing.T) {
+	gin.SetMode(gin.TestMode)
+	r := gin.New()
+	r.POST("/api/phid.lookup", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"result": []string{},
+		})
+	})
+
+	ts := httptest.NewServer(r)
+	defer ts.Close()
+
+	var result responses.PHIDLookupResponse
+
+	err := PerformCall(
+		ts.URL+"/api/phid.lookup",
 		map[string]interface{}{},
 		&result,
 		&ClientOptions{},
