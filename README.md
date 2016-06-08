@@ -121,6 +121,7 @@ for more information on how to use them.
 - file.download
 - macro.creatememe
 - maniphest.query
+- maniphest.createtask
 - paste.create
 - paste.query
 - phid.lookup
