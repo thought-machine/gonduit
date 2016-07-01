@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/karlseguin/typed"
 )
 
@@ -74,9 +73,8 @@ func PerformCall(
 			if len(arrResult) < 1 {
 				return nil
 			}
-		} else {
-			spew.Dump(err)
 		}
+
 		if err = json.Unmarshal(resultBytes, &result); err != nil {
 			return err
 		}
