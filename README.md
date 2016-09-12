@@ -16,6 +16,8 @@ A simple `go get` should do it:
 go get github.com/etcinit/gonduit
 ```
 
+For reproducible builds, you can also use [Glide](https://glide.sh/).
+
 ### Authentication
 
 Gonduit supports the following authentication methods:
