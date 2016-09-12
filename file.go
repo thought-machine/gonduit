@@ -6,7 +6,9 @@ import (
 )
 
 // FileDownload performs a call to file.download.
-func (c *Conn) FileDownload(req requests.FileDownloadRequest) (*responses.FileDownloadResponse, error) {
+func (c *Conn) FileDownload(
+	req requests.FileDownloadRequest,
+) (*responses.FileDownloadResponse, error) {
 	var res responses.FileDownloadResponse
 
 	if err := c.Call("file.download", &req, &res); err != nil {

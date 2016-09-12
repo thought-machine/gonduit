@@ -71,7 +71,11 @@ func (c *Conn) Connect() error {
 //
 // This is primarily useful for calling conduit endpoints that aren't
 // specifically supported by other methods in this package.
-func (c *Conn) Call(method string, params interface{}, result interface{}) error {
+func (c *Conn) Call(
+	method string,
+	params interface{},
+	result interface{},
+) error {
 	return core.PerformCall(
 		core.GetEndpointURI(c.host, method),
 		params,

@@ -24,7 +24,10 @@ func Dial(host string, options *core.ClientOptions) (*Conn, error) {
 }
 
 // Dial connects to conduit and confirms the API capabilities for future calls.
-func (d *Dialer) Dial(host string, options *core.ClientOptions) (*Conn, error) {
+func (d *Dialer) Dial(
+	host string,
+	options *core.ClientOptions,
+) (*Conn, error) {
 	var res responses.ConduitCapabilitiesResponse
 
 	// We use conduit.connect for authentication and it establishes a session.

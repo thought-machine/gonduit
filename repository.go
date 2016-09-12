@@ -6,7 +6,9 @@ import (
 )
 
 // RepositoryQuery performs a call to repository.query.
-func (c *Conn) RepositoryQuery(req requests.RepositoryQueryRequest) (*responses.RepositoryQueryResponse, error) {
+func (c *Conn) RepositoryQuery(
+	req requests.RepositoryQueryRequest,
+) (*responses.RepositoryQueryResponse, error) {
 	var res responses.RepositoryQueryResponse
 
 	if err := c.Call("repository.query", &req, &res); err != nil {

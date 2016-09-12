@@ -6,7 +6,9 @@ import (
 )
 
 // PasteCreate calls the paste.create endpoint.
-func (c *Conn) PasteCreate(req *requests.PasteCreateRequest) (responses.PasteCreateResponse, error) {
+func (c *Conn) PasteCreate(
+	req *requests.PasteCreateRequest,
+) (responses.PasteCreateResponse, error) {
 	var res responses.PasteCreateResponse
 
 	if err := c.Call("paste.create", &req, &res); err != nil {
@@ -17,7 +19,9 @@ func (c *Conn) PasteCreate(req *requests.PasteCreateRequest) (responses.PasteCre
 }
 
 // PasteQuery calls the paste.query endpoint.
-func (c *Conn) PasteQuery(req *requests.PasteQueryRequest) (responses.PasteQueryResponse, error) {
+func (c *Conn) PasteQuery(
+	req *requests.PasteQueryRequest,
+) (responses.PasteQueryResponse, error) {
 	var res responses.PasteQueryResponse
 
 	if err := c.Call("paste.query", &req, &res); err != nil {

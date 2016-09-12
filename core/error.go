@@ -7,12 +7,14 @@ var (
 	// output.
 	ErrJSONOutputUnsupported = errors.New("JSON output is not supported")
 
-	// ErrURLEncodedInputUnsupported is returned when conduit doesn't support URL
-	// encoded input.
-	ErrURLEncodedInputUnsupported = errors.New("urlencoded input not supported")
+	// ErrURLEncodedInputUnsupported is returned when conduit doesn't support
+	// URL encoded input.
+	ErrURLEncodedInputUnsupported = errors.New(
+		"urlencoded input not supported",
+	)
 
-	// ErrSessionAuthUnsupported is returned when conduit doesn't support session
-	// authentication.
+	// ErrSessionAuthUnsupported is returned when conduit doesn't support
+	// session authentication.
 	ErrSessionAuthUnsupported = errors.New(
 		"Session authentication is not supported",
 	)
@@ -25,7 +27,9 @@ var (
 
 	// ErrTokenAuthUnsupported is returned when conduit doesn't support token
 	// authentication.
-	ErrTokenAuthUnsupported = errors.New("Token authentication is not supported")
+	ErrTokenAuthUnsupported = errors.New(
+		"Token authentication is not supported",
+	)
 )
 
 // ConduitError is returned when conduit

@@ -15,8 +15,8 @@ func MakeRequest(
 	params interface{},
 	options *ClientOptions,
 ) (*http.Request, error) {
-	// First, we begin by building the request content, which will be encoded as
-	// a urlencoded form.
+	// First, we begin by building the request content, which will be encoded
+	// as a urlencoded form.
 	form, err := prepareForm(params, options)
 	if err != nil {
 		return nil, err
@@ -42,7 +42,10 @@ func setHeaders(req *http.Request) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 }
 
-func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
+func prepareForm(
+	body interface{},
+	options *ClientOptions,
+) (url.Values, error) {
 	form := url.Values{}
 	form.Add("output", "json")
 
@@ -60,6 +63,7 @@ func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
 
 	if body != nil {
 		jsonBody, err := json.Marshal(body)
+
 		if err != nil {
 			return nil, err
 		}
@@ -69,6 +73,7 @@ func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
 		handleConnectRequest(&form, body)
 	} else {
 		jsonBody, err := json.Marshal(map[string]interface{}{})
+
 		if err != nil {
 			return nil, err
 		}
@@ -81,6 +86,7 @@ func prepareForm(body interface{}, options *ClientOptions) (url.Values, error) {
 
 func handleConnectRequest(form *url.Values, body interface{}) {
 	_, isConduitConnect := body.(*requests.ConduitConnectRequest)
+
 	if isConduitConnect {
 		form.Add("__conduit__", "true")
 	}

@@ -7,7 +7,9 @@ import (
 )
 
 // ManiphestQuery performs a call to maniphest.query.
-func (c *Conn) ManiphestQuery(req requests.ManiphestQueryRequest) (*responses.ManiphestQueryResponse, error) {
+func (c *Conn) ManiphestQuery(
+	req requests.ManiphestQueryRequest,
+) (*responses.ManiphestQueryResponse, error) {
 	var res responses.ManiphestQueryResponse
 
 	if err := c.Call("maniphest.query", &req, &res); err != nil {
@@ -18,7 +20,9 @@ func (c *Conn) ManiphestQuery(req requests.ManiphestQueryRequest) (*responses.Ma
 }
 
 // ManiphestCreateTask performs a call to maniphest.createtask.
-func (c *Conn) ManiphestCreateTask(req requests.ManiphestCreateTaskRequest) (*entities.ManiphestTask, error) {
+func (c *Conn) ManiphestCreateTask(
+	req requests.ManiphestCreateTaskRequest,
+) (*entities.ManiphestTask, error) {
 	var res entities.ManiphestTask
 
 	if err := c.Call("maniphest.createtask", &req, &res); err != nil {
