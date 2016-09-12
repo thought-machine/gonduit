@@ -1,33 +1,22 @@
 package gonduit
 
 import (
-	"net/http/httptest"
 	"testing"
 
 	"github.com/etcinit/gonduit/core"
 	"github.com/etcinit/gonduit/responses"
+	"github.com/etcinit/gonduit/test/server"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestDial(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-	r := gin.New()
-	r.POST("/api/conduit.getcapabilities", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"result": map[string][]string{
-				"authentication": []string{"token", "session"},
-				"signatures":     []string{"consign"},
-				"input":          []string{"json", "urlencoded"},
-				"output":         []string{"json"},
-			},
-		})
-	})
+	s := server.New()
+	defer s.Close()
 
-	ts := httptest.NewServer(r)
-	defer ts.Close()
+	s.RegisterCapabilities()
 
-	_, err := Dial(ts.URL, &core.ClientOptions{
+	_, err := Dial(s.GetURL(), &core.ClientOptions{
 		APIToken: "some-token",
 	})
 
@@ -35,18 +24,14 @@ func TestDial(t *testing.T) {
 }
 
 func TestDial_withInvalid(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-	r := gin.New()
-	r.POST("/api/conduit.getcapabilities", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"fake": "fake",
-		})
+	s := server.New()
+	defer s.Close()
+
+	s.RegisterMethod("conduit.getcapabilities", 200, gin.H{
+		"fake": "fake",
 	})
 
-	ts := httptest.NewServer(r)
-	defer ts.Close()
-
-	_, err := Dial(ts.URL, &core.ClientOptions{
+	_, err := Dial(s.GetURL(), &core.ClientOptions{
 		APIToken: "some-token",
 	})
 

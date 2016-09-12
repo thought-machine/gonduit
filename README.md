@@ -116,6 +116,7 @@ for more information on how to use them.
 #### List of supported calls:
 
 - conduit.connect
+- conduit.query
 - differential.query
 - diffusion.querycommit
 - file.download
