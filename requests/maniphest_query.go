@@ -13,7 +13,7 @@ type ManiphestQueryRequest struct {
 	FullText     string                        `json:"fullText"`
 	Status       constants.ManiphestTaskStatus `json:"status"`
 	Order        constants.ManiphestQueryOrder `json:"order"`
-	Limit        uint64                        `json:"offset"`
+	Limit        uint64                        `json:"limit"`
 	Offset       uint64                        `json:"offset"`
 	Request
 }
