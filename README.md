@@ -130,7 +130,9 @@ for more information on how to use them.
 - phid.lookup
 - phid.query
 - project.query
+- remarkup.process
 - repository.query
+- user.query
 
 ## Arbitrary calls
 
