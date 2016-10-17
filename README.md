@@ -2,10 +2,6 @@
 
 A Go client for interacting with [Phabricator](http://phabricator.org) via the [Conduit](https://secure.phabricator.com/book/phabdev/article/conduit/) API.
 
-> Currently this library is incomplete. This is a fork from
-> https://github.com/jpoehls/go-conduit with support for some additional call
-> and options. The library is a bit messy right now.
-
 ## Getting started
 
 ### Installing the library
@@ -25,8 +21,8 @@ Gonduit supports the following authentication methods:
 - tokens
 - session
 
-> If you are creating a bot/automated script, you
-> should create a bot account on Phabricator rather than using your own.
+> If you are creating a bot/automated script, you should create a bot account
+> on Phabricator rather than using your own.
 
 #### `tokens`: Getting a conduit API token
 
