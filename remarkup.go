@@ -5,6 +5,7 @@ import (
 	"github.com/etcinit/gonduit/responses"
 )
 
+// RemarkupProcess performs a call to remarkup.process
 func (c *Conn) RemarkupProcess(
 	req requests.RemarkupProcessRequest,
 ) (*responses.RemarkupProcessResponse, error) {
