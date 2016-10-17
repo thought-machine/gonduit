@@ -129,6 +129,7 @@ for more information on how to use them.
 - paste.query
 - phid.lookup
 - phid.query
+- phriction.info
 - project.query
 - remarkup.process
 - repository.query
