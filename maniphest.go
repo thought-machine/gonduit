@@ -31,3 +31,15 @@ func (c *Conn) ManiphestCreateTask(
 
 	return &res, nil
 }
+
+func (c *Conn) ManiphestGetTaskTransactions(
+	req requests.ManiphestGetTaskTransactions,
+) (*responses.ManiphestGetTaskTransactionsResponse, error) {
+	var res responses.ManiphestGetTaskTransactionsResponse
+
+	if err := c.Call("maniphest.gettasktransactions", &req, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
