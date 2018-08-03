@@ -8,4 +8,7 @@ type User struct {
 	Image    string   `json:"image"`
 	URI      string   `json:"uri"`
 	Roles    []string `json:"roles"`
+	// TM extension: this is not returned by normal Phabricator installs.
+	// See https://github.com/thought-machine/phabricator for more info.
+	PrimaryEmail string `json:"primaryEmail"`
 }
