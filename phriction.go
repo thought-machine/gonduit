@@ -1,8 +1,8 @@
 package gonduit
 
 import (
-	"github.com/etcinit/gonduit/requests"
-	"github.com/etcinit/gonduit/responses"
+	"github.com/thought-machine/gonduit/requests"
+	"github.com/thought-machine/gonduit/responses"
 )
 
 // PhrictionInfo performs a call to phriction.info
