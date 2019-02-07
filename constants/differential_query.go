@@ -26,7 +26,7 @@ const (
 	DifferentialStatusClosed DifferentialStatus = "status-closed"
 )
 
-// DifferentialQueryOrder is the order in which query results cna be ordered.
+// DifferentialQueryOrder is the order in which query results can be ordered.
 type DifferentialQueryOrder string
 
 const (
