@@ -1,7 +1,6 @@
 package gonduit
 
 import (
-	"github.com/thought-machine/gonduit/entities"
 	"github.com/thought-machine/gonduit/requests"
 	"github.com/thought-machine/gonduit/responses"
 )
