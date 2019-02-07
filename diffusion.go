@@ -17,3 +17,21 @@ func (c *Conn) DiffusionQueryCommits(
 
 	return &res, nil
 }
+
+// DiffusionCommitSearch performs a call to diffusion.commit.search
+func (c *Conn) DiffusionCommitSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("diffusion.commit.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+// DiffusionRepositorySearch performs a call to diffusion.repository.search
+func (c *Conn) DiffusionRepositorySearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("diffusion.repository.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}

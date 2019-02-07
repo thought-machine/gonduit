@@ -30,3 +30,12 @@ func (c *Conn) PasteQuery(
 
 	return res, nil
 }
+
+// PasteSearch performs a call to paste.search
+func (c *Conn) PasteSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("paste.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}

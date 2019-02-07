@@ -17,3 +17,12 @@ func (c *Conn) FileDownload(
 
 	return &res, nil
 }
+
+// FileSearch performs a call to file.search
+func (c *Conn) FileSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("file.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
