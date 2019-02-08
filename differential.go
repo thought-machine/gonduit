@@ -18,6 +18,15 @@ func (c *Conn) DifferentialQuery(
 	return &res, nil
 }
 
+// DifferentialQueryDiffs performs a call to differential.querydiffs.
+func (c *Conn) DifferentialQueryDiffs(req requests.DifferentialQueryDiffsRequest) (*responses.DifferentialQueryDiffsResponse, error) {
+	var res responses.DifferentialQueryDiffsResponse
+	if err := c.Call("differential.querydiffs", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
 // DifferentialDiffSearch performs a call to differential.diff.search
 func (c *Conn) DifferentialDiffSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
