@@ -6,4 +6,4 @@ import "github.com/thought-machine/gonduit/entities"
 type DifferentialQueryResponse []*entities.DifferentialRevision
 
 // DifferentialQueryDiffsResponse is the response of calling differential.querydiffs.
-type DifferentialQueryDiffsResponse []*entities.DifferentialDiff
+type DifferentialQueryDiffsResponse map[string]*entities.DifferentialDiff
