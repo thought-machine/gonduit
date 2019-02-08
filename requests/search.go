@@ -11,4 +11,5 @@ type SearchRequest struct {
 	Before      string                 `json:"before,omitempty"`
 	After       string                 `json:"after,omitempty"`
 	Limit       int                    `json:"limit,omitempty"`
+	Request
 }

@@ -26,4 +26,5 @@ type DifferentialQueryRequest struct {
 type DifferentialQueryDiffsRequest struct {
 	IDs         []uint64 `json:"ids"`
 	RevisionIDs []uint64 `json:"revisionIDs"`
+	Request
 }
