@@ -1,0 +1,17 @@
+github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
+github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/gin-gonic/gin v0.0.0-20150309015120-e2fa89777e34 h1:ciz32aPJVEMlZcxCLA/1TvMLRgjzQIh6C5NF26ckv58=
+github.com/gin-gonic/gin v0.0.0-20150309015120-e2fa89777e34/go.mod h1:7cKuhb5qV2ggCFctp2fJQ+ErvciLZrIeoOSOm6mUr7Y=
+github.com/julienschmidt/httprouter v0.0.0-20150302021559-b428fda53bb0 h1:GXt5tFPgWlZlIgRl4Sv5KteO/KYgDMHLCyf3Kf8sdcA=
+github.com/julienschmidt/httprouter v0.0.0-20150302021559-b428fda53bb0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
+github.com/karlseguin/typed v1.1.7 h1:R8JGxdS0PNWWPKnHg4zh/n8NDFTEa6oIUcxjrMO4c6w=
+github.com/karlseguin/typed v1.1.7/go.mod h1:329jL66F7EH9O3xIBv2GAIFnMHIxH55NCQ78LUbZoJM=
+github.com/mattn/go-colorable v0.0.6 h1:jGqlOoCjqVR4hfTO9H1qrR2xi0xZNYmX2T1xlw7P79c=
+github.com/mattn/go-colorable v0.0.6/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+github.com/mattn/go-isatty v0.0.0-20160806122752-66b8e73f3f5c/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
+github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
+golang.org/x/sys v0.0.0-20160907145946-30de6d19a3bd/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=

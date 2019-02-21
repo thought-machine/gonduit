@@ -17,3 +17,12 @@ func (c *Conn) ProjectQuery(
 
 	return &res, nil
 }
+
+// ProjectSearch performs a call to project.search
+func (c *Conn) ProjectSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("project.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
