@@ -49,16 +49,15 @@ type DifferentialDiff struct {
 
 // A DifferentialChange represents a change to a file in Differential.
 type DifferentialChange struct {
-	ID          string                 `json:"id"`
-	Metadata    map[string]interface{} `json:"metadata"`
-	OldPath     string                 `json:"oldPath"`
-	CurrentPath string                 `json:"currentPath"`
-	Type        string                 `json:"type"`
-	FileType    string                 `json:"fileType"`
-	CommitHash  string                 `json:"commitHash"`
-	AddLines    string                 `json:"addLines"`
-	DelLines    string                 `json:"delLines"`
-	Hunks       []DifferentialHunk     `json:"hunks"`
+	ID          string             `json:"id"`
+	OldPath     string             `json:"oldPath"`
+	CurrentPath string             `json:"currentPath"`
+	Type        string             `json:"type"`
+	FileType    string             `json:"fileType"`
+	CommitHash  string             `json:"commitHash"`
+	AddLines    string             `json:"addLines"`
+	DelLines    string             `json:"delLines"`
+	Hunks       []DifferentialHunk `json:"hunks"`
 }
 
 // A DifferentialHunk is an absolute unit.
