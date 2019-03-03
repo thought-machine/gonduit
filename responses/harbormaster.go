@@ -8,3 +8,9 @@ type HarbormasterCreateArtifactResponse struct {
 		} `json:"data"`
 	} `json:"result"`
 }
+
+// HarbormasterSendMessageResponse is the response of calling harbormaster.sendmessage.
+type HarbormasterSendMessageResponse struct {
+	Result struct {
+	} `json:"result"`
+}
