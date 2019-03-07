@@ -15,8 +15,9 @@ type SearchResponse struct {
 
 // SearchData is a single response item from a search.
 type SearchData struct {
-	ID     int                    `json:"id"`
-	Type   string                 `json:"type"`
-	PHID   string                 `json:"phid"`
-	Fields map[string]interface{} `json:"fields"`
+	ID          int                               `json:"id"`
+	Type        string                            `json:"type"`
+	PHID        string                            `json:"phid"`
+	Fields      map[string]interface{}            `json:"fields"`
+	Attachments map[string]map[string]interface{} `json:"attachments"`
 }
