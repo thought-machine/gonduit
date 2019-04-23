@@ -6,12 +6,12 @@ import "github.com/thought-machine/gonduit/constants"
 type UnitResult struct {
 	Name      string                           `json:"name"`
 	Result    constants.HarbormasterUnitResult `json:"result"`
-	Namespace string                           `json:"namespace"`
-	Engine    string                           `json:"engine"`
+	Namespace string                           `json:"namespace,omitempty"`
+	Engine    string                           `json:"engine,omitempty"`
 	Duration  float64                          `json:"duration"`
-	Path      string                           `json:"path"`
-	Coverage  map[string]string                `json:"coverage"`
-	Details   string                           `json:"details"`
+	Path      string                           `json:"path,omitempty"`
+	Coverage  map[string]string                `json:"coverage,omitempty"`
+	Details   string                           `json:"details,omitempty"`
 	Format    constants.HarbormasterUnitFormat `json:"format"`
 }
 
