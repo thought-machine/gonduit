@@ -49,6 +49,7 @@ client, err := gonduit.Dial(
 	"https://phabricator.psyduck.info",
 	&core.ClientOptions{
 		APIToken: "api-SOMETOKEN",
+		Timeout: 10 * time.Second,
 	},
 )
 ```
