@@ -48,8 +48,8 @@ and finally creates a Client instance:
 client, err := gonduit.Dial(
 	"https://phabricator.psyduck.info",
 	&core.ClientOptions{
-		APIToken: "api-SOMETOKEN"
-	}
+		APIToken: "api-SOMETOKEN",
+	},
 )
 ```
 
@@ -65,7 +65,7 @@ client, err := gonduit.Dial(
 	&core.ClientOptions{
 		Cert: "CERTIFICATE",
 		CertUser: "USERNAME",
-	}
+	},
 )
 
 err = client.Connect()
@@ -79,8 +79,8 @@ Any conduit error response will be returned as a `core.ConduitError` type:
 client, err := gonduit.Dial(
 	"https://phabricator.psyduck.info",
 	&core.ClientOptions{
-		APIToken: "api-SOMETOKEN"
-	}
+		APIToken: "api-SOMETOKEN",
+	},
 )
 
 ce, ok := err.(*core.ConduitError)
