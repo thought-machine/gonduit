@@ -2,6 +2,7 @@ package gonduit
 
 import (
 	"testing"
+	"time"
 
 	"github.com/thought-machine/gonduit/core"
 	"github.com/thought-machine/gonduit/responses"
@@ -18,6 +19,20 @@ func TestDial(t *testing.T) {
 
 	_, err := Dial(s.GetURL(), &core.ClientOptions{
 		APIToken: "some-token",
+	})
+
+	assert.Nil(t, err)
+}
+
+func TestDial_withTimeout(t *testing.T) {
+	s := server.New()
+	defer s.Close()
+
+	s.RegisterCapabilities()
+
+	_, err := Dial(s.GetURL(), &core.ClientOptions{
+		APIToken: "some-token",
+		Timeout:  60 * time.Second,
 	})
 
 	assert.Nil(t, err)
