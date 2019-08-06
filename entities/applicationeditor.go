@@ -1,7 +1,6 @@
 package entities
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -20,7 +19,8 @@ func (o ObjectIdentifier) MarshalJSON() ([]byte, error) {
 	} else if o.Monogram != "" {
 		return []byte(fmt.Sprintf(`"%s"`, o.Monogram)), nil
 	}
-	return nil, errors.New("no object identifier specified")
+	// An empty string is fine - means no object
+	return []byte(`""`), nil
 }
 
 // Transaction is used for Edit methods.
