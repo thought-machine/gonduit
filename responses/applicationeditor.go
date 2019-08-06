@@ -9,5 +9,7 @@ type EditResponse struct {
 		PHID entities.PHID `json:"phid"`
 	} `json:"object"`
 	// Transactions contains information about the transactions that were actually applied.
-	Transactions []entities.Transaction `json:"transactions"`
+	Transactions []struct {
+		TransactionPHID entities.PHID `json:"phid"`
+	} `json:"transactions"`
 }
