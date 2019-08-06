@@ -3,10 +3,10 @@ package gonduit
 import (
 	"testing"
 
-	"github.com/thought-machine/gonduit/core"
-	"github.com/thought-machine/gonduit/test/server"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
+	"github.com/thought-machine/gonduit/core"
+	"github.com/thought-machine/gonduit/test/server"
 )
 
 func TestConduitQuery(t *testing.T) {
