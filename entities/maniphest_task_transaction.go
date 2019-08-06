@@ -2,8 +2,8 @@ package entities
 
 import "github.com/thought-machine/gonduit/util"
 
-// ManiphestTaskTranscation represents a single task's transcation on Maniphest.
-type ManiphestTaskTranscation struct {
+// ManiphestTaskTransaction represents a single task's transaction on Maniphest.
+type ManiphestTaskTransaction struct {
 	TaskID          string             `json:"taskID"`
 	TransactionID   string             `json:"transactionID"`
 	TransactionPHID string             `json:"transactionPHID"`
@@ -14,3 +14,7 @@ type ManiphestTaskTranscation struct {
 	AuthorPHID      string             `json:"authorPHID"`
 	DateCreated     util.UnixTimestamp `json:"dateCreated"`
 }
+
+// Backwards-compatible alias to fix typo.
+// Deprecated: Use ManiphestTaskTransaction instead.
+type ManiphestTaskTranscation = ManiphestTaskTransaction

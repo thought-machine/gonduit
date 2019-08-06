@@ -32,6 +32,7 @@ func (c *Conn) ManiphestCreateTask(
 	return &res, nil
 }
 
+// ManiphestGetTaskTransactions performs a call to maniphest.gettasktransactions
 func (c *Conn) ManiphestGetTaskTransactions(
 	req requests.ManiphestGetTaskTransactions,
 ) (*responses.ManiphestGetTaskTransactionsResponse, error) {
@@ -59,5 +60,15 @@ func (c *Conn) ManiphestStatusSearch(req requests.SearchRequest) (*responses.Sea
 	if err := c.Call("maniphest.status.search", &req, &res); err != nil {
 		return nil, err
 	}
+	return &res, nil
+}
+
+// ManiphestEdit performs a call to maniphest.edit
+func (c *Conn) ManiphestEdit(req requests.EditRequest) (*responses.EditResponse, error) {
+	var res responses.EditResponse
+	if err := c.Call("maniphest.edit", &req, &res); err != nil {
+		return nil, err
+	}
+
 	return &res, nil
 }

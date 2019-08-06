@@ -6,3 +6,5 @@ type Cursor struct {
 	After  uint64 `json:"after"`
 	Before uint64 `json:"before"`
 }
+
+type PHID string
