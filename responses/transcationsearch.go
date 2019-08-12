@@ -2,6 +2,7 @@ package responses
 
 import "github.com/thought-machine/gonduit/util"
 
+//TranscationSearchResponse is the response of calling transaction.search.
 type TransactionSearchResponse struct {
 	Data   []Data `json:"data"`
 	Cursor struct {
@@ -11,6 +12,7 @@ type TransactionSearchResponse struct {
 	} `json:"cursor"`
 }
 
+//Data is a struct embedded in the TranscationSearchResponse.
 type Data struct {
 	ID           int        `json:"id"`
 	Phid         string     `json:"phid"`
@@ -24,6 +26,7 @@ type Data struct {
 	Fields       map[string]interface{}     `json:"fields,omitempty"`
 }
 
+//Comments is a struct embedded in the Data struct.
 type Comments struct {
 	ID           int     `json:"id"`
 	Phid         string  `json:"phid"`

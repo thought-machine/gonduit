@@ -1,5 +1,6 @@
 package requests
 
+//TransactionSearchRequest represents a request to the transaction.search call.
 type TransactionSearchRequest struct {
 	ObjectID    string                 `json:"objectIdentifier,omitempty"`
 	Constraints map[string]interface{} `json:"constraints,omitempty"`
