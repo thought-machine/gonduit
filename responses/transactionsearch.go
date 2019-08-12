@@ -2,7 +2,7 @@ package responses
 
 import "github.com/thought-machine/gonduit/util"
 
-//TranscationSearchResponse is the response of calling transaction.search.
+//TransactionSearchResponse is the response of calling transaction.search.
 type TransactionSearchResponse struct {
 	Data   []Data `json:"data"`
 	Cursor struct {
@@ -12,7 +12,7 @@ type TransactionSearchResponse struct {
 	} `json:"cursor"`
 }
 
-//Data is a struct embedded in the TranscationSearchResponse.
+//Data is a struct embedded in the TransactionSearchResponse.
 type Data struct {
 	ID           int        `json:"id"`
 	Phid         string     `json:"phid"`
