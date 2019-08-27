@@ -239,6 +239,7 @@ func ManiphestMFASignTransaction(sign bool) Transaction {
 	}
 }
 
+// ManiphestCustomFieldTransaction allows the caller to set the value of the given field.
 func ManiphestCustomFieldTransaction(fieldName string, value string) Transaction {
 	return Transaction{
 		Type:  fmt.Sprintf("custom.%s", fieldName),
