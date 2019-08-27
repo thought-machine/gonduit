@@ -1,6 +1,10 @@
 package entities
 
-import "github.com/thought-machine/gonduit/util"
+import (
+	"fmt"
+
+	"github.com/thought-machine/gonduit/util"
+)
 
 // ManiphestTask represents a single task on Maniphest.
 type ManiphestTask struct {
