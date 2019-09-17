@@ -10,9 +10,8 @@ type EdgeSearchResponse struct {
 	} `json:"cursor"`
 }
 
-
 type Edge struct {
-	SourcePhid			string		`json:"sourcePHID"`
-	DestinationPhid		string		`json:"destinationPHID"`
-	EdgeType 			string		`json:"edgeType"`
+	SourcePhid      string `json:"sourcePHID"`
+	DestinationPhid string `json:"destinationPHID"`
+	EdgeType        string `json:"edgeType"`
 }
