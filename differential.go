@@ -44,3 +44,13 @@ func (c *Conn) DifferentialRevisionSearch(req requests.SearchRequest) (*response
 	}
 	return &res, nil
 }
+
+// DifferentialRevisionEdit performs a call to differential.revision.edit
+func (c *Conn) DifferentialRevisionEdit(req requests.EditRequest) (*responses.EditResponse, error) {
+	var res responses.EditResponse
+	if err := c.Call("differential.revision.edit", &req, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
