@@ -38,7 +38,7 @@ type ManiphestSubtype string
 func ManiphestParentTransaction(phid PHID) Transaction {
 	return Transaction{
 		Type:  "parent",
-		Value: phid,
+		Value: string(phid),
 	}
 }
 
@@ -47,15 +47,16 @@ func ManiphestParentTransaction(phid PHID) Transaction {
 func ManiphestColumnTransaction(columnPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "column",
-		Value: columnPHIDs,
+		Value: toStrings(columnPHIDs),
 	}
 }
+
 
 // ManiphestSpaceTransaction moves the task between Spaces.
 func ManiphestSpaceTransaction(spacePHID PHID) Transaction {
 	return Transaction{
 		Type:  "space",
-		Value: spacePHID,
+		Value: string(spacePHID),
 	}
 }
 
@@ -71,7 +72,7 @@ func ManiphestTitleTransaction(title string) Transaction {
 func ManiphestOwnerTransaction(owner PHID) Transaction {
 	return Transaction{
 		Type:  "owner",
-		Value: owner,
+		Value: string(owner),
 	}
 }
 
@@ -79,7 +80,7 @@ func ManiphestOwnerTransaction(owner PHID) Transaction {
 func ManiphestStatusTransaction(status ManiphestStatus) Transaction {
 	return Transaction{
 		Type:  "status",
-		Value: status,
+		Value: string(status),
 	}
 }
 
@@ -87,7 +88,7 @@ func ManiphestStatusTransaction(status ManiphestStatus) Transaction {
 func ManiphestPriorityTransaction(priority ManiphestPriority) Transaction {
 	return Transaction{
 		Type:  "priority",
-		Value: priority,
+		Value: string(priority),
 	}
 }
 
@@ -95,7 +96,7 @@ func ManiphestPriorityTransaction(priority ManiphestPriority) Transaction {
 func ManiphestPointsTransaction(points ManiphestPoints) Transaction {
 	return Transaction{
 		Type:  "points",
-		Value: points,
+		Value: int(points),
 	}
 }
 
@@ -111,7 +112,7 @@ func ManiphestDescriptionTransaction(description string) Transaction {
 func ManiphestAddParentsTransaction(parentPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "parents.add",
-		Value: parentPHIDs,
+		Value: toStrings(parentPHIDs),
 	}
 }
 
@@ -119,7 +120,7 @@ func ManiphestAddParentsTransaction(parentPHIDs ...PHID) Transaction {
 func ManiphestRemoveParentsTransaction(parentPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "parents.remove",
-		Value: parentPHIDs,
+		Value: toStrings(parentPHIDs),
 	}
 }
 
@@ -127,7 +128,7 @@ func ManiphestRemoveParentsTransaction(parentPHIDs ...PHID) Transaction {
 func ManiphestSetParentsTransaction(parentPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "parents.set",
-		Value: parentPHIDs,
+		Value: toStrings(parentPHIDs),
 	}
 }
 
@@ -135,7 +136,7 @@ func ManiphestSetParentsTransaction(parentPHIDs ...PHID) Transaction {
 func ManiphestAddSubtasksTransaction(subtaskPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subtasks.add",
-		Value: subtaskPHIDs,
+		Value: toStrings(subtaskPHIDs),
 	}
 }
 
@@ -143,7 +144,7 @@ func ManiphestAddSubtasksTransaction(subtaskPHIDs ...PHID) Transaction {
 func ManiphestRemoveSubtasksTransaction(subtaskPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subtasks.remove",
-		Value: subtaskPHIDs,
+		Value: toStrings(subtaskPHIDs),
 	}
 }
 
@@ -151,7 +152,7 @@ func ManiphestRemoveSubtasksTransaction(subtaskPHIDs ...PHID) Transaction {
 func ManiphestSetSubtasksTransaction(subtaskPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subtasks.set",
-		Value: subtaskPHIDs,
+		Value: toStrings(subtaskPHIDs),
 	}
 }
 
@@ -175,7 +176,7 @@ func ManiphestEditPolicyTransaction(policy string) Transaction {
 func ManiphestAddProjectsTransaction(projectPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "projects.add",
-		Value: projectPHIDs,
+		Value: toStrings(projectPHIDs),
 	}
 }
 
@@ -183,7 +184,7 @@ func ManiphestAddProjectsTransaction(projectPHIDs ...PHID) Transaction {
 func ManiphestRemoveProjectsTransaction(projectPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "projects.remove",
-		Value: projectPHIDs,
+		Value: toStrings(projectPHIDs),
 	}
 }
 
@@ -191,7 +192,7 @@ func ManiphestRemoveProjectsTransaction(projectPHIDs ...PHID) Transaction {
 func ManiphestSetProjectsTransaction(projectPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "projects.set",
-		Value: projectPHIDs,
+		Value: toStrings(projectPHIDs),
 	}
 }
 
@@ -199,7 +200,7 @@ func ManiphestSetProjectsTransaction(projectPHIDs ...PHID) Transaction {
 func ManiphestAddSubscribersTransaction(userPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subscribers.add",
-		Value: userPHIDs,
+		Value: toStrings(userPHIDs),
 	}
 }
 
@@ -207,7 +208,7 @@ func ManiphestAddSubscribersTransaction(userPHIDs ...PHID) Transaction {
 func ManiphestRemoveSubscribersTransaction(userPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subscribers.remove",
-		Value: userPHIDs,
+		Value: toStrings(userPHIDs),
 	}
 }
 
@@ -215,7 +216,7 @@ func ManiphestRemoveSubscribersTransaction(userPHIDs ...PHID) Transaction {
 func ManiphestSetSubscribersTransaction(userPHIDs ...PHID) Transaction {
 	return Transaction{
 		Type:  "subscribers.set",
-		Value: userPHIDs,
+		Value: toStrings(userPHIDs),
 	}
 }
 
@@ -223,7 +224,7 @@ func ManiphestSetSubscribersTransaction(userPHIDs ...PHID) Transaction {
 func ManiphestSubtypeTransaction(subtype ManiphestSubtype) Transaction {
 	return Transaction{
 		Type:  "subtype",
-		Value: subtype,
+		Value: string(subtype),
 	}
 }
 
@@ -249,4 +250,12 @@ func ManiphestCustomFieldTransaction(fieldName string, value string) Transaction
 		Type:  fmt.Sprintf("custom.%s", fieldName),
 		Value: value,
 	}
+}
+
+func toStrings(phids []PHID) []string {
+	strings := make([]string, len(phids))
+	for i, p := range phids {
+		strings[i] = string(p)
+	}
+	return strings
 }
