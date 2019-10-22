@@ -27,7 +27,7 @@ type ManiphestTask struct {
 	DateCreated        util.UnixTimestamp `json:"dateCreated"`
 	DateModified       util.UnixTimestamp `json:"dateModified"`
 	DependsOnTaskPHIDs []string           `json:"dependsOnTaskPHIDs"`
-	Points			   float64			  `json:"points"`
+	Points             float64            `json:"points"`
 }
 
 type ManiphestPoints int
@@ -51,7 +51,6 @@ func ManiphestColumnTransaction(columnPHIDs ...PHID) Transaction {
 		Value: toStrings(columnPHIDs),
 	}
 }
-
 
 // ManiphestSpaceTransaction moves the task between Spaces.
 func ManiphestSpaceTransaction(spacePHID PHID) Transaction {
