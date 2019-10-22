@@ -6,6 +6,7 @@ import (
 )
 
 // UserQuery performs a call to user.query.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "user.search" instead.
 func (c *Conn) UserQuery(
 	req requests.UserQueryRequest,
 ) (*responses.UserQueryResponse, error) {

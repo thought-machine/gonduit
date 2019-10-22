@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"strings"
 
 	"github.com/karlseguin/typed"
@@ -13,6 +14,9 @@ import (
 func GetEndpointURI(host string, method string) string {
 	return fmt.Sprintf("%s/api/%s", strings.TrimSuffix(host, "/"), method)
 }
+
+// Global client to improve connection caching (per godoc).
+var client *http.Client
 
 // PerformCall performs a call to the Conduit API with the provided URL and
 // parameters. The response will be unmarshaled into the passed result struct.
@@ -30,7 +34,9 @@ func PerformCall(
 		return err
 	}
 
-	client := makeHTTPClient(options)
+	if client == nil {
+		client = makeHTTPClient(options)
+	}
 
 	resp, err := client.Do(req)
 	if err != nil {

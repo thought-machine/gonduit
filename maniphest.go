@@ -7,6 +7,7 @@ import (
 )
 
 // ManiphestQuery performs a call to maniphest.query.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "maniphest.search" instead.
 func (c *Conn) ManiphestQuery(
 	req requests.ManiphestQueryRequest,
 ) (*responses.ManiphestQueryResponse, error) {
@@ -20,6 +21,7 @@ func (c *Conn) ManiphestQuery(
 }
 
 // ManiphestCreateTask performs a call to maniphest.createtask.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "maniphest.edit" instead.
 func (c *Conn) ManiphestCreateTask(
 	req requests.ManiphestCreateTaskRequest,
 ) (*entities.ManiphestTask, error) {
@@ -33,6 +35,7 @@ func (c *Conn) ManiphestCreateTask(
 }
 
 // ManiphestGetTaskTransactions performs a call to maniphest.gettasktransactions
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "transaction.search" instead.
 func (c *Conn) ManiphestGetTaskTransactions(
 	req requests.ManiphestGetTaskTransactions,
 ) (*responses.ManiphestGetTaskTransactionsResponse, error) {

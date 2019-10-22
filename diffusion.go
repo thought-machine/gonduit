@@ -6,6 +6,7 @@ import (
 )
 
 // DiffusionQueryCommits performs a call to diffusion.querycommits.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "diffusion.commit.search" instead.
 func (c *Conn) DiffusionQueryCommits(
 	req requests.DiffusionQueryCommitsRequest,
 ) (*responses.DiffusionQueryCommitsResponse, error) {

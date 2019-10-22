@@ -6,6 +6,7 @@ import (
 )
 
 // DifferentialQuery performs a call to differential.query.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "differential.revision.search" instead.
 func (c *Conn) DifferentialQuery(
 	req requests.DifferentialQueryRequest,
 ) (*responses.DifferentialQueryResponse, error) {
@@ -19,6 +20,7 @@ func (c *Conn) DifferentialQuery(
 }
 
 // DifferentialQueryDiffs performs a call to differential.querydiffs.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "differential.diff.search" instead.
 func (c *Conn) DifferentialQueryDiffs(req requests.DifferentialQueryDiffsRequest) (responses.DifferentialQueryDiffsResponse, error) {
 	var res responses.DifferentialQueryDiffsResponse
 	if err := c.Call("differential.querydiffs", &req, &res); err != nil {
