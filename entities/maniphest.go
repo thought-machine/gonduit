@@ -27,6 +27,7 @@ type ManiphestTask struct {
 	DateCreated        util.UnixTimestamp `json:"dateCreated"`
 	DateModified       util.UnixTimestamp `json:"dateModified"`
 	DependsOnTaskPHIDs []string           `json:"dependsOnTaskPHIDs"`
+	Points			   float64			  `json:"points"`
 }
 
 type ManiphestPoints int
