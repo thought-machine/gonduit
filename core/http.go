@@ -16,7 +16,8 @@ type ClientOptions struct {
 
 	InsecureSkipVerify bool
 
-	Timeout time.Duration
+	RoundTripper http.RoundTripper
+	Timeout      time.Duration
 }
 
 // makeHttpClient creates a new HTTP client for making API requests.
@@ -27,12 +28,19 @@ func makeHTTPClient(options *ClientOptions) *http.Client {
 		timeout = options.Timeout
 	}
 
-	return &http.Client{
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: options.InsecureSkipVerify,
-			},
+	var transport http.RoundTripper
+
+	transport = &http.Transport{
+		TLSClientConfig: &tls.Config{
+			InsecureSkipVerify: options.InsecureSkipVerify,
 		},
+	}
+	if options.RoundTripper != nil {
+		transport = options.RoundTripper
+	}
+
+	return &http.Client{
+		Transport: transport,
 		Timeout: timeout,
 	}
 }

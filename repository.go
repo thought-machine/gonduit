@@ -6,6 +6,7 @@ import (
 )
 
 // RepositoryQuery performs a call to repository.query.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "diffusion.repository.search" instead.
 func (c *Conn) RepositoryQuery(
 	req requests.RepositoryQueryRequest,
 ) (*responses.RepositoryQueryResponse, error) {

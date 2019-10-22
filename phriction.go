@@ -6,6 +6,7 @@ import (
 )
 
 // PhrictionInfo performs a call to phriction.info
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "phriction.document.search" instead.
 func (c *Conn) PhrictionInfo(
 	req requests.PhrictionInfoRequest,
 ) (*responses.PhrictionInfoResponse, error) {

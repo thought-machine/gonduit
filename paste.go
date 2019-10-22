@@ -6,6 +6,7 @@ import (
 )
 
 // PasteCreate calls the paste.create endpoint.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "paste.edit" instead.
 func (c *Conn) PasteCreate(
 	req *requests.PasteCreateRequest,
 ) (responses.PasteCreateResponse, error) {
@@ -19,6 +20,7 @@ func (c *Conn) PasteCreate(
 }
 
 // PasteQuery calls the paste.query endpoint.
+// Deprecated: This method is frozen and will eventually be deprecated. New code should use "paste.search" instead.
 func (c *Conn) PasteQuery(
 	req *requests.PasteQueryRequest,
 ) (responses.PasteQueryResponse, error) {
