@@ -27,6 +27,14 @@ func (c *Conn) ProjectSearch(req requests.SearchRequest) (*responses.SearchRespo
 	return &res, nil
 }
 
+func (c *Conn) ProjectEdit(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("project.edit", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
 func (c *Conn) ProjectColumnSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
 	if err := c.Call("project.column.search", &req, &res); err != nil {
