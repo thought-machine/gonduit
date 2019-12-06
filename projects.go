@@ -27,8 +27,8 @@ func (c *Conn) ProjectSearch(req requests.SearchRequest) (*responses.SearchRespo
 	return &res, nil
 }
 
-func (c *Conn) ProjectEdit(req requests.SearchRequest) (*responses.SearchResponse, error) {
-	var res responses.SearchResponse
+func (c *Conn) ProjectEdit(req requests.EditRequest) (*responses.EditResponse, error) {
+	var res responses.EditResponse
 	if err := c.Call("project.edit", &req, &res); err != nil {
 		return nil, err
 	}
