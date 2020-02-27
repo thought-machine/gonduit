@@ -1,8 +1,8 @@
 package responses
 
-// FileContentQueryResponse represents a response of the
+// DiffusionFileContentQueryResponse represents a response of the
 // diffusion.filecontentquery call.
-type FileContentQueryResponse struct {
+type DiffusionFileContentQueryResponse struct {
 	TooSlow  bool   `json:"tooSlow"`
 	TooHuge  bool   `json:"tooHuge"`
 	FilePHID string `json:"filePHID"`
