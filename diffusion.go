@@ -54,3 +54,12 @@ func (c *Conn) DiffusionResolveRefs(req requests.ResolveRefsRequest) (*responses
 	}
 	return &res, nil
 }
+
+// DiffusionFileContentQuery performs a call to diffusion.filecontentquery
+func (c *Conn) DiffusionFileContentQuery(req requests.FileContentQueryRequest) (*responses.FileContentQueryResponse, error) {
+	var res responses.FileContentQueryResponse
+	if err := c.Call("diffusion.filecontentquery", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
