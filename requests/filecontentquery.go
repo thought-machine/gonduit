@@ -1,8 +1,8 @@
 package requests
 
-// DiffusionFileContentQueryRequest represents a request to the
+// FileContentQueryRequest represents a request to the
 // diffusion.filecontentquery call.
-type DiffusionFileContentQueryRequest struct {
+type FileContentQueryRequest struct {
 	Path       string `json:"path"`
 	Commit     string `json:"string"`
 	Timeout    int    `json:"timeout"`
