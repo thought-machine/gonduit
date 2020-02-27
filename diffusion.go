@@ -36,30 +36,3 @@ func (c *Conn) DiffusionRepositorySearch(req requests.SearchRequest) (*responses
 	}
 	return &res, nil
 }
-
-// DiffusionCommitParentsQuery performs a call to diffusion.commitparentsquery
-func (c *Conn) DiffusionCommitParentsQuery(req requests.CommitParentsQueryRequest) (*responses.CommitParentsQueryResponse, error) {
-	var res responses.CommitParentsQueryResponse
-	if err := c.Call("diffusion.commitparentsquery", &req, &res); err != nil {
-		return nil, err
-	}
-	return &res, nil
-}
-
-// DiffusionResolveRefs performs a call to diffusion.resolverefs
-func (c *Conn) DiffusionResolveRefs(req requests.ResolveRefsRequest) (*responses.ResolveRefsResponse, error) {
-	var res responses.ResolveRefsResponse
-	if err := c.Call("diffusion.resolverefs", &req, &res); err != nil {
-		return nil, err
-	}
-	return &res, nil
-}
-
-// DiffusionFileContentQuery performs a call to diffusion.filecontentquery
-func (c *Conn) DiffusionFileContentQuery(req requests.FileContentQueryRequest) (*responses.FileContentQueryResponse, error) {
-	var res responses.FileContentQueryResponse
-	if err := c.Call("diffusion.filecontentquery", &req, &res); err != nil {
-		return nil, err
-	}
-	return &res, nil
-}
