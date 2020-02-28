@@ -4,7 +4,7 @@ package requests
 // diffusion.filecontentquery call.
 type FileContentQueryRequest struct {
 	Path       string `json:"path"`
-	Commit     string `json:"string"`
+	Commit     string `json:"commit"`
 	Timeout    int    `json:"timeout"`
 	ByteLimit  int    `json:"byteLimit"`
 	Repository string `json:"repository"`
