@@ -9,4 +9,5 @@ type FileContentQueryRequest struct {
 	ByteLimit  int    `json:"byteLimit"`
 	Repository string `json:"repository"`
 	Branch     string `json:"branch"`
+	Request
 }
