@@ -1,6 +1,12 @@
 package gonduit
 
 import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path"
+	"strings"
+
 	"github.com/thought-machine/gonduit/core"
 	"github.com/thought-machine/gonduit/responses"
 	"github.com/thought-machine/gonduit/util"
@@ -21,6 +27,38 @@ func Dial(host string, options *core.ClientOptions) (*Conn, error) {
 	d.ClientVersion = "1"
 
 	return d.Dial(host, options)
+}
+
+// DialFromArcrc connects to conduit. If the API token is not set on the options, it attempts to
+// load one from ~/.arcrc.
+func DialFromArcrc(host string,	options *core.ClientOptions) (*Conn, error) {
+	if options.APIToken != "" {
+		return Dial(host, options)
+	}
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return nil, fmt.Errorf("Cannot determine home dir: %s", err)
+	}
+	f, err := os.Open(path.Join(home, ".arcrc"))
+	if err != nil {
+		return nil, fmt.Errorf("Cannot open ~/.arcrc: %s", err)
+	}
+	defer f.Close()
+	arcrc := struct {
+		Hosts map[string]struct {
+			Token string `json:"token"`
+		} `json:"hosts"`
+	}{}
+	if err := json.NewDecoder(f).Decode(&arcrc); err != nil {
+		return nil, fmt.Errorf("Failed to decode ~/.arcrc: %s", err)
+	}
+	for k, v := range arcrc.Hosts {
+		if strings.Contains(k, host) {
+			options.APIToken = v.Token
+			return Dial(host, options)
+		}
+	}
+	return nil, fmt.Errorf("Failed to find appropriate token in .arcrc")
 }
 
 // Dial connects to conduit and confirms the API capabilities for future calls.
