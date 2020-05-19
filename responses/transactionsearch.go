@@ -1,5 +1,6 @@
 package responses
 
+import "encoding/json"
 import "github.com/thought-machine/gonduit/util"
 
 //TransactionSearchResponse is the response of calling transaction.search.
@@ -14,26 +15,26 @@ type TransactionSearchResponse struct {
 
 //Data is a struct embedded in the TransactionSearchResponse.
 type Data struct {
-	ID           int        `json:"id"`
-	Phid         string     `json:"phid"`
-	Type         string     `json:"type"`
-	AuthorPHID   string     `json:"authorPHID"`
-	ObjectPHID   string     `json:"objectPHID"`
-	DateCreated  util.UnixTimestamp        `json:"dateCreated"`
-	DateModified util.UnixTimestamp        `json:"dateModified"`
-	GroupID      string     `json:"groupID"`
-	Comments     []Comments `json:"comments"`
-	Fields       map[string]interface{}     `json:"fields,omitempty"`
+	ID           int                `json:"id"`
+	Phid         string             `json:"phid"`
+	Type         string             `json:"type"`
+	AuthorPHID   string             `json:"authorPHID"`
+	ObjectPHID   string             `json:"objectPHID"`
+	DateCreated  util.UnixTimestamp `json:"dateCreated"`
+	DateModified util.UnixTimestamp `json:"dateModified"`
+	GroupID      string             `json:"groupID"`
+	Comments     []Comments         `json:"comments"`
+	Fields       json.RawMessage    `json:"fields,omitempty"`
 }
 
 //Comments is a struct embedded in the Data struct.
 type Comments struct {
-	ID           int     `json:"id"`
-	Phid         string  `json:"phid"`
-	Version      int     `json:"version"`
-	AuthorPHID   string  `json:"authorPHID"`
+	ID           int                    `json:"id"`
+	Phid         string                 `json:"phid"`
+	Version      int                    `json:"version"`
+	AuthorPHID   string                 `json:"authorPHID"`
 	DateCreated  util.UnixTimestamp     `json:"dateCreated"`
 	DateModified util.UnixTimestamp     `json:"dateModified"`
-	Removed      bool    `json:"removed"`
+	Removed      bool                   `json:"removed"`
 	Content      map[string]interface{} `json:"content"`
 }
