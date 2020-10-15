@@ -22,3 +22,12 @@ func (c *Conn) HarbormasterSendMessage(req requests.HarbormasterSendMessageReque
 	}
 	return &res, nil
 }
+
+// HarbormasterBuildableSearch performs a call to harbormaster.buildable.search.
+func (c *Conn) HarbormasterBuildableSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
+	var res responses.SearchResponse
+	if err := c.Call("harbormaster.buildable.search", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
