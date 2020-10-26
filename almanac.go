@@ -6,9 +6,9 @@ import (
 )
 
 // AlmanacNetworkSearch performs a call to almanac.network.search
-func (c *Conn) AlmanacNetworkSearch () (*responses.SearchResponse, error) {
+func (c *Conn) AlmanacNetworkSearch (req requests.Request) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	if err := c.Call("almanac.network.search", &requests.Request{}, &res); err != nil {
+	if err := c.Call("almanac.network.search", &req, &res); err != nil {
 		return nil, err
 	}
 	return &res, nil
@@ -24,9 +24,9 @@ func (c *Conn) AlmanacNetworkEdit (req requests.EditRequest) (*responses.EditRes
 }
 
 // AlmanacDeviceSearch performs a call to almanac.device.search
-func (c *Conn) AlmanacDeviceSearch () (*responses.SearchResponse, error) {
+func (c *Conn) AlmanacDeviceSearch (req requests.Request) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	if err := c.Call("almanac.device.search", &requests.Request{}, &res); err != nil {
+	if err := c.Call("almanac.device.search", &req, &res); err != nil {
 		return nil, err
 	}
 	return &res, nil
@@ -42,9 +42,9 @@ func (c *Conn) AlmanacDeviceEdit (req requests.EditRequest) (*responses.EditResp
 }
 
 // AlmanacServiceSearch performs a call to almanac.service.search
-func (c *Conn) AlmanacServiceSearch () (*responses.SearchResponse, error) {
+func (c *Conn) AlmanacServiceSearch (req requests.Request) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	if err := c.Call("almanac.service.search", &requests.Request{}, &res); err != nil {
+	if err := c.Call("almanac.service.search", &req, &res); err != nil {
 		return nil, err
 	}
 	return &res, nil
@@ -60,9 +60,9 @@ func (c *Conn) AlmanacServiceEdit (req requests.EditRequest) (*responses.EditRes
 }
 
 // AlmanacBindingSearch performs a call to almanac.binding.search
-func (c *Conn) AlmanacBindingSearch () (*responses.SearchResponse, error) {
+func (c *Conn) AlmanacBindingSearch (req requests.Request) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	if err := c.Call("almanac.binding.search", &requests.Request{}, &res); err != nil {
+	if err := c.Call("almanac.binding.search", &req, &res); err != nil {
 		return nil, err
 	}
 	return &res, nil
@@ -78,9 +78,9 @@ func (c *Conn) AlmanacBindingEdit (req requests.EditRequest) (*responses.EditRes
 }
 
 // AlmanacInterfaceSearch performs a call to almanac.interface.search
-func (c *Conn) AlmanacInterfaceSearch () (*responses.SearchResponse, error) {
+func (c *Conn) AlmanacInterfaceSearch (req requests.Request) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	if err := c.Call("almanac.interface.search", &requests.Request{}, &res); err != nil {
+	if err := c.Call("almanac.interface.search", &req, &res); err != nil {
 		return nil, err
 	}
 	return &res, nil
