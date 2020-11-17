@@ -27,3 +27,12 @@ func (c *Conn) UserSearch(req requests.SearchRequest) (*responses.SearchResponse
 	}
 	return &res, nil
 }
+
+// UserEdit performs a call to user.edit
+func (c *Conn) UserEdit(req requests.EditRequest) (*responses.EditResponse, error) {
+	var res responses.EditResponse
+	if err := c.Call("user.edit", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
