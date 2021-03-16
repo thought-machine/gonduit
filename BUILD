@@ -6,4 +6,9 @@ go_default_library(
         "//responses",
         "//util",
     ],
+    test_deps = [
+        "//test/server",
+        "//third_party/go:gin",
+        "//third_party/go:testify",
+    ],
 )
