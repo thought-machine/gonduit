@@ -1,0 +1,19 @@
+def go_default_library(deps:list=[]):
+    """Creates a Go library & test with a default setup."""
+    name = basename(package_name())
+    lib = go_library(
+        name = name,
+        srcs = glob(["*.go"], exclude=["*_test.go"]),
+        visibility = ["PUBLIC"],
+        deps = deps,
+    )
+    test_srcs = glob(["*_test.go"])
+    if test_srcs:
+        go_test(
+            name = name + "_test",
+            srcs = test_srcs,
+            deps = deps + [
+                lib,
+                "//third_party/go:testify",
+            ],
+        )

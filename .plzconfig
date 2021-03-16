@@ -1,0 +1,6 @@
+[parse]
+preloadbuilddefs = build_defs/go_default_library.build_defs
+
+[go]
+importpath = github.com/thought-machine/gonduit
+gotool = //third_party/go:toolchain|go
