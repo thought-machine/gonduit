@@ -46,6 +46,26 @@ go_module(
     name = "ginkgo",
     module = "github.com/onsi/ginkgo",
     version = "v1.15.1",
+    install = [
+        ".",
+        "config",
+        "internal/codelocation",
+        "internal/containernode",
+        "internal/leafnodes",
+        "internal/spec",
+        "internal/specrunner",
+        "internal/failer",
+        "internal/suite",
+        "internal/spec_iterator",
+        "internal/global",
+        "internal/remote",
+        "internal/testingtproxy",
+        "internal/writer",
+        "reporters",
+        "reporters/stenographer",
+        "reporters/stenographer/support/go-colorable",
+        "types",
+    ],
     test_only = True,
     deps = [
         ":tail",
@@ -56,6 +76,20 @@ go_module(
     name = "gomega",
     module = "github.com/onsi/gomega",
     version = "v1.11.0",
+    install = [
+        ".",
+        "format",
+        "internal/assertion",
+        "internal/asyncassertion",
+        "internal/oraclematcher",
+        "internal/testingtsupport",
+        "matchers",
+        "matchers/support/goraph/bipartitegraph",
+        "matchers/support/goraph/node",
+        "matchers/support/goraph/edge",
+        "matchers/support/goraph/util",
+        "types",
+    ],
     test_only = True,
     deps = [
         ":x_net",
@@ -67,6 +101,10 @@ go_module(
     name = "tail",
     module = "github.com/nxadm/tail",
     version = "v1.4.8",
+    install = [
+        ".",
+        "...",
+    ],
     test_only = True,
     deps = [
         ":fsnotify",
@@ -87,7 +125,10 @@ go_module(
 go_module(
     name = "x_sys",
     module = "golang.org/x/sys",
-    install = ["unix"],
+    install = [
+        "internal/unsafeheader",
+        "unix",
+    ],
     version = "0b90fd5c4c48ef7ae7ef6c393cb118d2e7969999",
 )
 
@@ -102,6 +143,8 @@ go_module(
     module = "golang.org/x/net",
     version = "d523dce5a7f4b994f7ed0531dbe44cd8fd803e26",
     install = [
+        "html",
+        "html/atom",
         "html/charset",
     ],
     deps = [
@@ -118,6 +161,19 @@ go_module(
         "encoding/charmap",
         "encoding/htmlindex",
         "transform",
+        "encoding/internal/identifier",
+        "encoding/internal",
+        "language",
+        "encoding/japanese",
+        "encoding/korean",
+        "encoding/simplifiedchinese",
+        "encoding/traditionalchinese",
+        "encoding/unicode",
+        "internal/language",
+        "internal/language/compact",
+        "internal/tag",
+        "internal/utf8internal",
+        "runes",
     ],
 )
 
