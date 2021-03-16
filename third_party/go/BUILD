@@ -254,10 +254,10 @@ go_module(
     test_only = True,
 )
 
-go_get(
+go_module(
     name = "go-codec",
-    get = "github.com/ugorji/go/codec",
-    revision = "v1.2.4",
+    module = "github.com/ugorji/go/codec",
+    version = "v1.2.4",
 )
 
 go_module(
