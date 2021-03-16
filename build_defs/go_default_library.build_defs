@@ -1,6 +1,7 @@
-def go_default_library(deps:list=[]):
+def go_default_library(external_test:bool=False, deps:list=[], test_deps:list=["//third_party/go:testify"]):
     """Creates a Go library & test with a default setup."""
     name = basename(package_name())
+    name = name or "gonduit"
     lib = go_library(
         name = name,
         srcs = glob(["*.go"], exclude=["*_test.go"]),
@@ -12,8 +13,6 @@ def go_default_library(deps:list=[]):
         go_test(
             name = name + "_test",
             srcs = test_srcs,
-            deps = deps + [
-                lib,
-                "//third_party/go:testify",
-            ],
+            external = external_test,
+            deps = deps + test_deps + [lib],
         )
