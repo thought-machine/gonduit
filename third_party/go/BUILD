@@ -182,3 +182,104 @@ go_module(
     module = "gopkg.in/yaml.v2",
     version = "v2.4.0",
 )
+
+go_module(
+    name = "gin",
+    module = "github.com/gin-gonic/gin",
+    version = "v1.6.3",
+    install = [
+        ".",
+        "internal/bytesconv",
+        "binding",
+        "render",
+        "internal/json",
+    ],
+    test_only = True,
+    deps = [
+        ":go-codec",
+        ":isatty",
+        ":protobuf",
+        ":sse",
+        ":validator",
+        ":yaml",
+    ],
+)
+
+go_module(
+    name = "validator",
+    module = "github.com/go-playground/validator/v10",
+    version = "v10.4.1",
+    test_only = True,
+    deps = [
+        ":universal-translator",
+        ":urn",
+        ":x_crypto",
+    ],
+)
+
+go_module(
+    name = "universal-translator",
+    module = "github.com/go-playground/universal-translator",
+    version = "v0.17.0",
+    test_only = True,
+    deps = [
+        ":locales",
+    ],
+)
+
+go_module(
+    name = "locales",
+    module = "github.com/go-playground/locales",
+    install = [
+        ".",
+        "currency",
+    ],
+    version = "v0.13.0",
+    test_only = True,
+)
+
+go_module(
+    name = "x_crypto",
+    module = "golang.org/x/crypto",
+    version = "e6e6c4f2bb5b5887c7f7dd52f01ea7b2fbeb297d",
+    install = [
+        "sha3",
+    ],
+)
+
+go_module(
+    name = "urn",
+    module = "github.com/leodido/go-urn",
+    version = "v1.2.1",
+    test_only = True,
+)
+
+go_get(
+    name = "go-codec",
+    get = "github.com/ugorji/go/codec",
+    revision = "v1.2.4",
+)
+
+go_module(
+    name = "protobuf",
+    module = "github.com/golang/protobuf",
+    version = "v1.3.3",
+    install = [
+        "proto",
+    ],
+)
+
+go_module(
+    name = "sse",
+    module = "github.com/gin-contrib/sse",
+    version = "v0.1.0",
+)
+
+go_module(
+    name = "isatty",
+    module = "github.com/mattn/go-isatty",
+    version = "v0.0.12",
+    deps = [
+        ":x_sys",
+    ],
+)
