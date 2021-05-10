@@ -14,3 +14,16 @@ type DiffusionQueryCommitsRequest struct {
 	Limit          uint64   `json:"limit"`
 	Request
 }
+
+// DiffusionBranchQueryRequest represents a request to the
+// diffusion.branchquery call.
+type DiffusionBranchQueryRequest struct {
+	Closed     bool     `json:"closed"`
+	Contains   string   `json:"contains"`
+	Patterns   []string `json:"patterns"`
+	Repository string   `json:"repository"`
+	Branch     string   `json:"branch"`
+	Offset     uint64   `json:"offset"`
+	Limit      uint64   `json:"limit"`
+	Request
+}
