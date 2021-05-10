@@ -63,3 +63,12 @@ func (c *Conn) DiffusionFileContentQuery(req requests.FileContentQueryRequest) (
 	}
 	return &res, nil
 }
+
+// DiffusionBranchQuery performs a call to diffusion.branchquery
+func (c *Conn) DiffusionBranchQuery(req requests.DiffusionBranchQueryRequest) (*responses.DiffusionBranchQueryResponse, error) {
+	var res responses.DiffusionBranchQueryResponse
+	if err := c.Call("diffusion.branchquery", &req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}

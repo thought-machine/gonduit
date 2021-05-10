@@ -9,3 +9,7 @@ type DiffusionQueryCommitsResponse struct {
 	IdentifierMap map[string]string                   `json:"identifierMap"`
 	Cursor        entities.Cursor                     `json:"cursor"`
 }
+
+// DiffusionBranchQueryResponse represents a response of the
+// diffusion.branchquery call.
+type DiffusionBranchQueryResponse map[string]*entities.DiffusionBranch

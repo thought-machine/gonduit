@@ -18,3 +18,19 @@ type DiffusionCommit struct {
 	Committer      string `json:"committer"`
 	CommitterName  string `json:"committerName"`
 }
+
+// DiffusionBranch represents a branch in Diffusion.
+type DiffusionBranch struct {
+	ShortName string `json:"shortName"`
+	CommitID  string `json:"commitIdentifier"`
+	RefType   string `json:"refType"`
+	RawFields struct {
+		ObjectName string `json:"objectName"`
+		ObjectType string `json:"objectType"`
+		Refname    string `json:"refname"`
+		Subject    string `json:"subject"`
+		Creator    string `json:"creator"`
+		Author     string `json:"author"`
+		Epoch      string `json:"epoch"`
+	} `json:"RawFields"`
+}
