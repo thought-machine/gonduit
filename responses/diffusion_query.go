@@ -12,4 +12,4 @@ type DiffusionQueryCommitsResponse struct {
 
 // DiffusionBranchQueryResponse represents a response of the
 // diffusion.branchquery call.
-type DiffusionBranchQueryResponse map[string]*entities.DiffusionBranch
+type DiffusionBranchQueryResponse []*entities.DiffusionBranch
