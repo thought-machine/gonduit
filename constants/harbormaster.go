@@ -18,8 +18,12 @@ const (
 type HarbormasterMessageType string
 
 const (
-	HarbormasterPass HarbormasterMessageType = "pass"
+	HarbormasterAbort HarbormasterMessageType = "abort"
 	HarbormasterFail HarbormasterMessageType = "fail"
+	HarbormasterPass HarbormasterMessageType = "pass"
+	HarbormasterPause HarbormasterMessageType = "pause"
+	HarbormasterRestart HarbormasterMessageType = "restart"
+	HarbormasterResume HarbormasterMessageType = "resume"
 	HarbormasterWork HarbormasterMessageType = "work"
 )
 
