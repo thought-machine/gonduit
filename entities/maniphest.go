@@ -3,7 +3,7 @@ package entities
 import (
 	"fmt"
 
-	"github.com/thought-machine/gonduit/util"
+	"github.com/samwestmoreland/gonduit/util"
 )
 
 // ManiphestTask represents a single task on Maniphest.

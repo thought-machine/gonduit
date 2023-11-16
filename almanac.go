@@ -1,8 +1,8 @@
 package gonduit
 
 import (
-	"github.com/thought-machine/gonduit/requests"
-	"github.com/thought-machine/gonduit/responses"
+	"github.com/samwestmoreland/gonduit/requests"
+	"github.com/samwestmoreland/gonduit/responses"
 )
 
 // AlmanacNetworkSearch performs a call to almanac.network.search

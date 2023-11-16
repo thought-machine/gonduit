@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/thought-machine/gonduit/requests"
+	"github.com/samwestmoreland/gonduit/requests"
 )
 
 // MakeRequest creates a new requests to the conduit API.

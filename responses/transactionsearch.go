@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/thought-machine/gonduit/util"
+import "github.com/samwestmoreland/gonduit/util"
 
 //TransactionSearchResponse is the response of calling transaction.search.
 type TransactionSearchResponse struct {

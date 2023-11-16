@@ -1,6 +1,6 @@
 package entities
 
-import "github.com/thought-machine/gonduit/util"
+import "github.com/samwestmoreland/gonduit/util"
 
 // Project represents a single Phabricator Project.
 type Project struct {

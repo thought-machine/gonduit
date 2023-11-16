@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	"github.com/thought-machine/gonduit/core"
-	"github.com/thought-machine/gonduit/test/server"
+	"github.com/samwestmoreland/gonduit/core"
+	"github.com/samwestmoreland/gonduit/test/server"
 )
 
 func TestConduitQuery(t *testing.T) {

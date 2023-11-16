@@ -1,8 +1,8 @@
 package gonduit
 
 import (
-	"github.com/thought-machine/gonduit/requests"
-	"github.com/thought-machine/gonduit/responses"
+	"github.com/samwestmoreland/gonduit/requests"
+	"github.com/samwestmoreland/gonduit/responses"
 )
 
 // PhurlsSearch performs a call to phurls.search

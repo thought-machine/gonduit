@@ -1,6 +1,6 @@
 package entities
 
-import "github.com/thought-machine/gonduit/util"
+import "github.com/samwestmoreland/gonduit/util"
 
 // ManiphestTaskTransaction represents a single task's transaction on Maniphest.
 type ManiphestTaskTransaction struct {

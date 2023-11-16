@@ -1,6 +1,6 @@
 package entities
 
-import "github.com/thought-machine/gonduit/util"
+import "github.com/samwestmoreland/gonduit/util"
 
 // DifferentialRevision represents a revision in Differential.
 type DifferentialRevision struct {

@@ -1,6 +1,6 @@
 package requests
 
-import "github.com/thought-machine/gonduit/constants"
+import "github.com/samwestmoreland/gonduit/constants"
 
 // DifferentialQueryRequest represents a request to the
 // differential.query call.

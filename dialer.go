@@ -7,9 +7,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/thought-machine/gonduit/core"
-	"github.com/thought-machine/gonduit/responses"
-	"github.com/thought-machine/gonduit/util"
+	"github.com/samwestmoreland/gonduit/core"
+	"github.com/samwestmoreland/gonduit/responses"
+	"github.com/samwestmoreland/gonduit/util"
 )
 
 // A Dialer contains options for connecting to an address.
