@@ -56,3 +56,13 @@ func (c *Conn) DifferentialRevisionEdit(req requests.EditRequest) (*responses.Ed
 
 	return &res, nil
 }
+
+// DifferentialGetRawDiff performs a call to differential.getrawdiff
+func (c *Conn) DifferentialGetRawDiff(req requests.DifferentialGetRawDiffRequest) (*responses.DifferentialGetRawDiffResponse, error) {
+	var res responses.DifferentialGetRawDiffResponse
+	if err := c.Call("differential.getrawdiff", &req, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
