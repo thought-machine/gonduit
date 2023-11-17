@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/samwestmoreland/gonduit/entities"
+import "github.com/thought-machine/gonduit/entities"
 
 // ProjectQueryResponse represents a response from calling project.query.
 type ProjectQueryResponse struct {

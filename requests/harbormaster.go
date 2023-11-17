@@ -1,8 +1,8 @@
 package requests
 
 import (
-	"github.com/samwestmoreland/gonduit/constants"
-	"github.com/samwestmoreland/gonduit/entities"
+	"github.com/thought-machine/gonduit/constants"
+	"github.com/thought-machine/gonduit/entities"
 )
 
 // HarbormasterCreateArtifactRequest represents a request to the harbormaster.createartifact call.

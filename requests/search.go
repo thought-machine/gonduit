@@ -1,6 +1,6 @@
 package requests
 
-import "github.com/samwestmoreland/gonduit/constants"
+import "github.com/thought-machine/gonduit/constants"
 
 // SearchRequest represents a request to one of the .search endpoints.
 type SearchRequest struct {

@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/samwestmoreland/gonduit/entities"
+	. "github.com/thought-machine/gonduit/entities"
 )
 
 var _ = Describe("ObjectIdentifier", func() {

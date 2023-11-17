@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/samwestmoreland/gonduit/entities"
+import "github.com/thought-machine/gonduit/entities"
 
 // EditResponse is likely to change as ApplicationEditor evolves.
 type EditResponse struct {

@@ -1,4 +1,4 @@
-module github.com/samwestmoreland/gonduit
+module github.com/thought-machine/gonduit
 
 require (
 	github.com/gin-gonic/gin v1.4.0

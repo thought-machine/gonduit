@@ -6,9 +6,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	"github.com/samwestmoreland/gonduit/core"
-	"github.com/samwestmoreland/gonduit/responses"
-	"github.com/samwestmoreland/gonduit/test/server"
+	"github.com/thought-machine/gonduit/core"
+	"github.com/thought-machine/gonduit/responses"
+	"github.com/thought-machine/gonduit/test/server"
 )
 
 func TestDial(t *testing.T) {

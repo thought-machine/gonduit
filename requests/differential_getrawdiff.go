@@ -1,6 +1,6 @@
 package requests
 
-import "github.com/samwestmoreland/gonduit/responses"
+import "github.com/thought-machine/gonduit/responses"
 
 // DifferentialGetRawDiffRequest represents a request to
 // differential.getrawdiff.

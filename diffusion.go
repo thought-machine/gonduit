@@ -1,8 +1,8 @@
 package gonduit
 
 import (
-	"github.com/samwestmoreland/gonduit/requests"
-	"github.com/samwestmoreland/gonduit/responses"
+	"github.com/thought-machine/gonduit/requests"
+	"github.com/thought-machine/gonduit/responses"
 )
 
 // DiffusionQueryCommits performs a call to diffusion.querycommits.

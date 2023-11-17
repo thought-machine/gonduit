@@ -1,6 +1,6 @@
 package entities
 
-import "github.com/samwestmoreland/gonduit/constants"
+import "github.com/thought-machine/gonduit/constants"
 
 // A UnitResult represents the result of a unit test, as sent to Harbormaster.
 type UnitResult struct {

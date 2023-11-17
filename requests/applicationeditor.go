@@ -1,6 +1,6 @@
 package requests
 
-import "github.com/samwestmoreland/gonduit/entities"
+import "github.com/thought-machine/gonduit/entities"
 
 type EditRequest struct {
 	ObjectIdentifier entities.ObjectIdentifier `json:"objectIdentifier"`

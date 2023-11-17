@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/samwestmoreland/gonduit/constants"
+import "github.com/thought-machine/gonduit/constants"
 
 // SearchResponse is the response of calling one of the .search endpoints.
 type SearchResponse struct {

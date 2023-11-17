@@ -1,6 +1,6 @@
 package requests
 
-import "github.com/samwestmoreland/gonduit/constants"
+import "github.com/thought-machine/gonduit/constants"
 
 // ProjectQueryRequest represents a request to project.query.
 type ProjectQueryRequest struct {
