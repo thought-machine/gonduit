@@ -33,7 +33,7 @@ func (c *Conn) DifferentialQueryDiffs(req requests.DifferentialQueryDiffsRequest
 // DifferentialDiffSearch performs a call to differential.diff.search
 func (c *Conn) DifferentialDiffSearch(req requests.SearchRequest) (*responses.SearchResponse, error) {
 	var res responses.SearchResponse
-	fmt.Println("req: ", req)
+	fmt.Printf("req: %+v\n", req)
 	if err := c.Call("differential.diff.search", &req, &res); err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func (c *Conn) DifferentialRevisionEdit(req requests.EditRequest) (*responses.Ed
 // DifferentialGetRawDiff performs a call to differential.getrawdiff
 func (c *Conn) DifferentialGetRawDiff(req requests.DifferentialGetRawDiffRequest) (*responses.DifferentialGetRawDiffResponse, error) {
 	var res responses.DifferentialGetRawDiffResponse
-	fmt.Println("req: ", req)
+	fmt.Printf("req: %+v\n", req)
 	if err := c.Call("differential.getrawdiff", &req, &res); err != nil {
 		return nil, err
 	}
