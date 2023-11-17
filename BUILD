@@ -1,15 +1,50 @@
-# TODO(peterebden): Re-enable once https://github.com/thought-machine/please/issues/1671 is fixed.
-# go_default_library(
-#     deps = [
-#         "//core",
-#         "//entities",
-#         "//requests",
-#         "//responses",
-#         "//util",
-#     ],
-#     test_deps = [
-#         "//test/server",
-#         "//third_party/go:gin",
-#         "//third_party/go:testify",
-#     ],
-# )
+go_library(
+    name = "gonduit",
+    srcs = [
+        "almanac.go",
+        "badge.go",
+        "client.go",
+        "conduit.go",
+        "dialer.go",
+        "differential.go",
+        "diffusion.go",
+        "edges.go",
+        "file.go",
+        "harbormaster.go",
+        "macro.go",
+        "maniphest.go",
+        "owners.go",
+        "paste.go",
+        "phid.go",
+        "phriction.go",
+        "phurl.go",
+        "projects.go",
+        "remarkup.go",
+        "repository.go",
+        "transaction.go",
+        "user.go",
+    ],
+    deps = [
+        "//core",
+        "//entities",
+        "//requests",
+        "//responses",
+        "//util",
+    ],
+)
+
+go_test(
+    name = "gonduit_test",
+    srcs = [
+        "conduit_test.go",
+        "dialer_test.go",
+    ],
+    deps = [
+        ":gonduit",
+        "//core",
+        "//responses",
+        "//test/server",
+        "//third_party/go:gin",
+        "//third_party/go:testify",
+    ],
+)
