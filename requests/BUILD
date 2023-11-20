@@ -5,6 +5,7 @@ go_library(
         "commitparentsquery.go",
         "common.go",
         "conduit_connect.go",
+        "differential_getrawdiff.go",
         "differential_query.go",
         "diffusion_query.go",
         "edge_search.go",

@@ -6,6 +6,7 @@ go_library(
         "conduit_capabilities.go",
         "conduit_connect.go",
         "conduit_query.go",
+        "differential_getrawdiff.go",
         "differential_query.go",
         "diffusion_query.go",
         "edge_search.go",
