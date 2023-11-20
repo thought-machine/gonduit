@@ -1,4 +1,3 @@
-subinclude("///go//build_defs:go")
 
 package(default_visibility = ["PUBLIC"])
 
