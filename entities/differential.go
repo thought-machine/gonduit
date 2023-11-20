@@ -69,6 +69,10 @@ type DifferentialHunk struct {
 	Corpus    string `json:"corpus"`
 }
 
+// A DifferentialRawDiff is a raw diff.
+type DifferentialRawDiff struct {
+	Diff string `json:"diff"`
+}
 
 // DifferentialDiffUpdateTransaction adds a diff (by PHID) to the given revision
 func DifferentialDiffUpdateTransaction(diff PHID) Transaction {

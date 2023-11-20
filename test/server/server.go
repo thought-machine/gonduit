@@ -32,10 +32,10 @@ func New() *Server {
 func (s *Server) RegisterCapabilities() {
 	s.RegisterMethod("conduit.getcapabilities", 200, gin.H{
 		"result": map[string][]string{
-			"authentication": []string{"token", "session"},
-			"signatures":     []string{"consign"},
-			"input":          []string{"json", "urlencoded"},
-			"output":         []string{"json"},
+			"authentication": {"token", "session"},
+			"signatures":     {"consign"},
+			"input":          {"json", "urlencoded"},
+			"output":         {"json"},
 		},
 	})
 }
