@@ -1,6 +1,7 @@
-go_default_library(
-    deps = [
-        "//third_party/go:gin",
-    ],
+go_library(
+    name = "server",
+    srcs = ["server.go"],
     test_only = True,
+    visibility = ["//:all"],
+    deps = ["//third_party/go:gin"],
 )

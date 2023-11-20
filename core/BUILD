@@ -1,10 +1,23 @@
-go_default_library(
+go_library(
+    name = "core",
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
+    visibility = ["//:all"],
     deps = [
         "//requests",
-        "//responses",
         "//third_party/go:typed",
     ],
-    test_deps = [
+)
+
+go_test(
+    name = "core_test",
+    srcs = glob(["*_test.go"]),
+    deps = [
+        ":core",
+        "//requests",
+        "//responses",
         "//third_party/go:gin",
         "//third_party/go:testify",
     ],
