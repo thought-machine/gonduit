@@ -1,29 +1,9 @@
 go_library(
     name = "gonduit",
-    srcs = [
-        "almanac.go",
-        "badge.go",
-        "client.go",
-        "conduit.go",
-        "dialer.go",
-        "differential.go",
-        "diffusion.go",
-        "edges.go",
-        "file.go",
-        "harbormaster.go",
-        "macro.go",
-        "maniphest.go",
-        "owners.go",
-        "paste.go",
-        "phid.go",
-        "phriction.go",
-        "phurl.go",
-        "projects.go",
-        "remarkup.go",
-        "repository.go",
-        "transaction.go",
-        "user.go",
-    ],
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
     deps = [
         "//core",
         "//entities",
@@ -35,10 +15,9 @@ go_library(
 
 go_test(
     name = "gonduit_test",
-    srcs = [
-        "conduit_test.go",
-        "dialer_test.go",
-    ],
+    srcs = glob(
+        ["*_test.go"],
+    ),
     deps = [
         ":gonduit",
         "//core",

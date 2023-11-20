@@ -1,24 +1,9 @@
 go_library(
     name = "entities",
-    srcs = [
-        "applicationeditor.go",
-        "common.go",
-        "conduit.go",
-        "differential.go",
-        "diffusion.go",
-        "harbormaster.go",
-        "maniphest.go",
-        "maniphest_task_transaction.go",
-        "paste.go",
-        "phid.go",
-        "phriction.go",
-        "projects.go",
-        "remarkup.go",
-        "repository.go",
-        "resolvedref.go",
-        "session.go",
-        "user.go",
-    ],
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
     visibility = [
         "//:all",
         "//requests:all",
@@ -32,10 +17,7 @@ go_library(
 
 go_test(
     name = "entities_test",
-    srcs = [
-        "applicationeditor_test.go",
-        "entities_suite_test.go",
-    ],
+    srcs = glob(["*_test.go"]),
     external = True,
     deps = [
         ":entities",

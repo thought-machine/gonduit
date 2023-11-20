@@ -1,11 +1,9 @@
 go_library(
     name = "core",
-    srcs = [
-        "call.go",
-        "error.go",
-        "http.go",
-        "request.go",
-    ],
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
     visibility = ["//:all"],
     deps = [
         "//requests",
@@ -15,12 +13,7 @@ go_library(
 
 go_test(
     name = "core_test",
-    srcs = [
-        "call_test.go",
-        "error_test.go",
-        "http_test.go",
-        "request_test.go",
-    ],
+    srcs = glob(["*_test.go"]),
     deps = [
         ":core",
         "//requests",
