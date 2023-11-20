@@ -1,9 +1,8 @@
-
 package(default_visibility = ["PUBLIC"])
 
 go_toolchain(
     name = "toolchain",
-    version = "1.21.3",
+    version = "1.21.4",
 )
 
 go_repo(
