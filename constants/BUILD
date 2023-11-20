@@ -1,5 +1,5 @@
 go_library(
-name = "constants",
+    name = "constants",
     srcs = [
         "differential_query.go",
         "harbormaster.go",

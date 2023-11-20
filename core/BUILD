@@ -1,5 +1,5 @@
 go_library(
-name = "core",
+    name = "core",
     srcs = [
         "call.go",
         "error.go",

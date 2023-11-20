@@ -1,5 +1,5 @@
 go_library(
-name = "server",
+    name = "server",
     srcs = ["server.go"],
     test_only = True,
     visibility = ["//:all"],

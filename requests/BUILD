@@ -1,5 +1,5 @@
 go_library(
-name = "requests",
+    name = "requests",
     srcs = [
         "applicationeditor.go",
         "commitparentsquery.go",
