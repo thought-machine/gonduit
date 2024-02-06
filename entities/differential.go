@@ -29,23 +29,23 @@ type DifferentialRevision struct {
 
 // A DifferentialDiff represents a diff in Differential.
 type DifferentialDiff struct {
-	ID                        string                 `json:"id"`
-	RevisionID                string                 `json:"revisionID"`
-	DateCreated               util.UnixTimestamp     `json:"dateCreated"`
-	DateModified              util.UnixTimestamp     `json:"dateModified"`
-	SourceControlBaseRevision string                 `json:"sourceControlBaseRevision"`
-	SourceControlPath         string                 `json:"sourceControlPath"`
-	SourceControlSystem       string                 `json:"sourceControlSystem"`
-	Branch                    string                 `json:"branch"`
-	Bookmark                  string                 `json:"bookmark"`
-	CreationMethod            string                 `json:"creationMethod"`
-	Description               string                 `json:"description"`
-	UnitStatus                string                 `json:"unitStatus"`
-	LintStatus                string                 `json:"lintStatus"`
-	Changes                   []DifferentialChange   `json:"changes"`
-	Properties                DifferentialProperties `json:"properties"`
-	AuthorName                string                 `json:"authorName"`
-	AuthorEmail               string                 `json:"authorEmail"`
+	ID                        string               `json:"id"`
+	RevisionID                string               `json:"revisionID"`
+	DateCreated               util.UnixTimestamp   `json:"dateCreated"`
+	DateModified              util.UnixTimestamp   `json:"dateModified"`
+	SourceControlBaseRevision string               `json:"sourceControlBaseRevision"`
+	SourceControlPath         string               `json:"sourceControlPath"`
+	SourceControlSystem       string               `json:"sourceControlSystem"`
+	Branch                    string               `json:"branch"`
+	Bookmark                  string               `json:"bookmark"`
+	CreationMethod            string               `json:"creationMethod"`
+	Description               string               `json:"description"`
+	UnitStatus                string               `json:"unitStatus"`
+	LintStatus                string               `json:"lintStatus"`
+	Changes                   []DifferentialChange `json:"changes"`
+	Properties                interface{}          `json:"properties"`
+	AuthorName                string               `json:"authorName"`
+	AuthorEmail               string               `json:"authorEmail"`
 }
 
 // A DifferentialChange represents a change to a file in Differential.
@@ -68,18 +68,6 @@ type DifferentialHunk struct {
 	OldLength string `json:"oldLength"`
 	NewLength string `json:"newLength"`
 	Corpus    string `json:"corpus"`
-}
-
-// A DifferentialProperties contains dynamic metadata about the Diff.
-type DifferentialProperties struct {
-	ArcOnto []DifferentialArcOnto `json:"arc:onto"`
-}
-
-// A DifferentialArcOnto contains a list of branch destinations set with arc.
-type DifferentialArcOnto struct {
-	Type string `json:"type"`
-	Name string `json:"name"`
-	Kind string `json:"kind"`
 }
 
 // A DifferentialRawDiff is a raw diff.
