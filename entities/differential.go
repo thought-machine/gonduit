@@ -1,6 +1,10 @@
 package entities
 
-import "github.com/thought-machine/gonduit/util"
+import (
+	"encoding/json"
+
+	"github.com/thought-machine/gonduit/util"
+)
 
 // DifferentialRevision represents a revision in Differential.
 type DifferentialRevision struct {
@@ -43,7 +47,7 @@ type DifferentialDiff struct {
 	UnitStatus                string               `json:"unitStatus"`
 	LintStatus                string               `json:"lintStatus"`
 	Changes                   []DifferentialChange `json:"changes"`
-	Properties                interface{}          `json:"properties"`
+	Properties                json.RawMessage      `json:"properties"`
 	AuthorName                string               `json:"authorName"`
 	AuthorEmail               string               `json:"authorEmail"`
 }
@@ -68,6 +72,18 @@ type DifferentialHunk struct {
 	OldLength string `json:"oldLength"`
 	NewLength string `json:"newLength"`
 	Corpus    string `json:"corpus"`
+}
+
+// A DifferentialProperties contains dynamic metadata about the Diff.
+type DifferentialProperties struct {
+	ArcOnto []DifferentialArcOnto `json:"arc:onto"`
+}
+
+// A DifferentialArcOnto contains a list of branch destinations set with arc.
+type DifferentialArcOnto struct {
+	Type string `json:"type"`
+	Name string `json:"name"`
+	Kind string `json:"kind"`
 }
 
 // A DifferentialRawDiff is a raw diff.
