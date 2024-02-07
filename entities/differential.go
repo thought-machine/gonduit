@@ -79,7 +79,7 @@ type DifferentialProperties struct {
 	ArcOnto []DifferentialArcOnto `json:"arc:onto"`
 }
 
-// A DifferentialArcOnto contains a list of branch destinations set with arc.
+// A DifferentialArcOnto contains a branch destination set with arc.
 type DifferentialArcOnto struct {
 	Type string `json:"type"`
 	Name string `json:"name"`
