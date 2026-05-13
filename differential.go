@@ -70,7 +70,7 @@ func (c *Conn) DifferentialGetRawDiff(req requests.DifferentialGetRawDiffRequest
 // DifferentialSetDiffProperty performs a call to differential.setdiffproperty
 func (c *Conn) DifferentialSetDiffProperty(req requests.DifferentialSetDiffPropertyRequest) error {
 	var res *responses.Empty
-	if err := c.Call("differential.setdiffproperty", &res); err != nil {
+	if err := c.Call("differential.setdiffproperty", &req, &res); err != nil {
 		return err
 	}
 

@@ -1,7 +1,5 @@
 package requests
 
-import "github.com/thought-machine/gonduit/constants"
-
 // DifferentialSetDiffPropertyRequest represents a request to the differential.setdiffproperty endpoint.
 type DifferentialSetDiffPropertyRequest struct {
 	// ID of the diff (not revision) to set the property on.
