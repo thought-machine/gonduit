@@ -11,7 +11,7 @@ type DifferentialGetRawDiffResponse struct {
 	*entities.DifferentialRawDiff
 }
 
-// UnmarshalJSON handles the fact that Phabricator returns the JSON as a string.
+// UnmarshalJSON handles the fact that Phabricator returns the diff as a JSON-encoded string.
 func (r *DifferentialGetRawDiffResponse) UnmarshalJSON(b []byte) error {
 	var rawString string
 	if err := json.Unmarshal(b, &rawString); err == nil {
